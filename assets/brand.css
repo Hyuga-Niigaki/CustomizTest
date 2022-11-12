@@ -1,0 +1,175 @@
+@charset "utf-8";
+
+/*================================================== nav_brand ==================================================*/
+
+#nav_brand {
+    position: fixed;
+    top: 50%; right: 4vw;
+    margin-top: -81px;
+    z-index: 1;
+}
+#nav_brand ul {
+}
+#nav_brand ul li {
+    margin-bottom: 20px;
+    line-height: 1;
+}
+#nav_brand ul li:last-child {
+    margin-bottom: 0;
+}
+#nav_brand ul li a {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.6rem;
+    color: #A0A0A0;
+}
+#nav_brand ul .active a {
+    color: #222;
+}
+
+/*================================================== philosophy ==================================================*/
+
+#philosophy {
+    padding: 16vw 0;
+    text-align: center;
+}
+#philosophy h1 {
+    margin-bottom: 4vw;
+    font-size: 2.8rem;
+    line-height: 1;
+}
+#philosophy p {
+    font-size: 1.8rem;
+    line-height: 2;
+}
+
+/*================================================== common ==================================================*/
+
+.sec_panel {
+    position: relative;
+    margin-bottom: 24vw;
+    min-height: 100%;
+}
+.sec_panel .wrap_img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 40%; height: 100vh;
+}
+.sec_panel.bottom .wrap_img {
+    top: auto; bottom: 0;
+}
+.sec_panel.active .wrap_img {
+    position: fixed;
+}
+.sec_panel .wrap_txt {
+    margin-left: 48%;
+    padding: 24vw 0;
+    width: 448px;
+}
+.sec_panel .wrap_txt .ttl {
+    margin-bottom: 4vw;
+    font-size: 2.2rem;
+}
+.sec_panel .wrap_txt .sub {
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+    line-height: 1;
+}
+.sec_panel .wrap_txt p {
+    line-height: 2;
+}
+.sec_panel .wrap_txt hr {
+    display: block;
+    margin: 8vw 0;
+    width: 100%; height: 1px;
+    background: #777;
+    border: none;
+}
+.sec_panel .wrap_txt .fs_12 {
+    margin-top: 2em;
+}
+
+/*================================================== story ==================================================*/
+
+#story .wrap_img {
+    background: url("/common/rn_img/brand/img_story_pc.jpg") center no-repeat;
+    background-size: cover;
+}
+
+/*================================================== science ==================================================*/
+
+#science .wrap_img {
+    background: url("/common/rn_img/brand/img_science_pc.jpg") center no-repeat;
+    background-size: cover;
+}
+#science .wrap_txt .sec_vcv {
+    margin-top: 56px;
+    padding-top: 56px;
+    border-top: 1px solid #777;
+}
+#science .wrap_txt .sec_vcv .sttl {
+    margin-bottom: 28px;
+    font-size: 2.2rem;
+    font-feature-settings: "palt";
+}
+#science .wrap_txt .sec_vcv p {
+    margin-bottom: 40px;
+    font-size: 1.6rem;
+}
+#science .wrap_txt .sec_vcv img {
+    margin-bottom: 46px;
+}
+#science .wrap_txt .sec_vcv .fs_12 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+/*================================================== keyproduct ==================================================*/
+
+#keyproduct .wrap_img {
+    background: url("/common/rn_img/brand/img_keyproduct_pc.jpg") center no-repeat;
+    background-size: cover;
+}
+
+/*================================================== quality ==================================================*/
+
+#quality .wrap_img {
+    background: url("/common/rn_img/brand/img_quality_pc.jpg") center no-repeat;
+    background-size: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

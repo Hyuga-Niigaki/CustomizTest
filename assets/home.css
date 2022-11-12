@@ -1,0 +1,246 @@
+@charset "utf-8";
+
+/*================================================== h1 ==================================================*/
+
+h1 {
+    position: fixed;
+    top: -9999px; left: -9999px;
+}
+
+/*================================================== slider ==================================================*/
+
+.wrap_slider {
+    margin-top: calc(6vw + 32px);
+    margin-bottom: 8vw;
+    /* opacity: 0; */
+}
+/* .opa1 {
+    opacity: 1;
+} */
+.wrap_slider .slider {
+    position: relative;
+}
+.wrap_slider .slider section {
+    display: flex;
+    padding-right: 4vw;
+    padding-left: 4vw;
+    align-items: center;
+}
+.wrap_slider .slider > section:not(:first-child){
+    display: none;
+}
+.wrap_slider .slider section .wrap_img {
+    margin-right: 4vw;
+    width: 60vw;
+}
+.wrap_slider .slider section .wrap_img img {
+    display: block;
+    width: 100%; height: auto;
+}
+.wrap_slider .slider section .wrap_txt {
+    width: 28vw;
+}
+.wrap_slider .slider section .wrap_txt a {
+    display: block;
+}
+.wrap_slider .slider section .wrap_txt .ttl {
+    margin-bottom: 16px;
+    font-size: 2rem;
+}
+.wrap_slider .slider section .wrap_txt .sttl {
+    margin-bottom: 28px;
+    font-size: 1.6rem;
+    font-feature-settings: "palt";
+    letter-spacing: .05em;
+}
+.wrap_slider .slider section .wrap_txt .btn_32 {
+    display: inline-block;
+    padding: 0 13px;
+    transition: all .15s ease;
+}
+.wrap_slider .slider .slick-arrow {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 10%;
+    text-indent: -9999px;
+    background: transparent;
+    border: none;
+    outline: none;
+    z-index: 1;
+}
+.wrap_slider .slider .slick-prev {
+    left: 0;
+}
+.wrap_slider .slider .slick-next {
+    right: 0;
+}
+.wrap_slider .slider .slick-arrow:hover {
+    cursor: none;
+}
+.wrap_slider .slider .slick-dots {
+    display: flex;
+    position: absolute;
+    bottom: 0; right: 4vw;
+    width: 28vw; height: 1px;
+    background: #E1E1E1;
+}
+.wrap_slider .slider .slick-dots li {
+    flex: 1;
+}
+.wrap_slider .slider .slick-dots li button {
+    display: block;
+    padding: 0;
+    height: 1px;
+    background: #222;
+    border: 0;
+    outline: 0;
+    font-size: 0;
+    text-indent: -9999px;
+}
+.wrap_slider .cursor {
+    display: none;
+    position: absolute;
+    top: -50%; left: -50%;
+    margin: -28px 0 0 -14px;
+    width: 28px; height: 56px;
+    background: url("/common/rn_img/common/arrow1.svg") center no-repeat;
+    background-size: 28px auto;
+    backface-visibility: hidden;
+    pointer-events: none;
+    mix-blend-mode: difference;
+    z-index: 1;
+}
+.wrap_slider .cursor.show_left {
+    display: block;
+    transform: scale(-1,1);
+}
+.wrap_slider .cursor.show_right {
+    display: block;
+}
+
+/*================================================== sec_feature ==================================================*/
+
+.sec_feature {
+    margin-bottom: 8vw;
+}
+.sec_feature ul {
+    display: flex;
+    gap: 0 4vw;
+}
+.sec_feature ul li {
+    flex: 1;
+}
+.sec_feature ul li a {
+    display: block;
+}
+.sec_feature ul li a img {
+    display: block;
+    margin-bottom: 20px;
+    width: 100%; height: auto;
+    transition: all .15s ease;
+}
+.sec_feature ul li a:hover img {
+    opacity: .75;
+}
+.sec_feature ul li a .ttl {
+    margin-bottom: 8px;
+    font-size: 1.8rem;
+}
+.sec_feature ul li a .sttl {
+    font-size: 1.4rem;
+    color: #777;
+}
+
+/*================================================== sec_store ==================================================*/
+
+.sec_store {
+    margin-bottom: 8vw;
+}
+.sec_store section {
+    display: flex;
+    align-items: center;
+}
+.sec_store section .wrap_img {
+    margin-right: 4vw;
+    width: 44vw;
+}
+.sec_store section .wrap_img img {
+    display: block;
+    width: 100%; height: auto;
+}
+.sec_store section .wrap_txt {
+    width: 38vw;
+}
+.sec_store section .wrap_txt .ttl {
+    margin-bottom: 40px;
+    font-size: 1.8rem;
+    line-height: 1;
+}
+.sec_store section .wrap_txt p {
+    margin-bottom: 40px;
+    font-size: 1.4rem;
+}
+.sec_store section .wrap_txt .btn_40 {
+    width: 280px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
