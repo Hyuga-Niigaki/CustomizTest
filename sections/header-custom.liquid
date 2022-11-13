@@ -1,0 +1,39 @@
+ 
+
+
+<header class="header">
+  <div class="logo">
+    <a href="https://www.decencia.co.jp/">敏感肌化粧品のDECENCIA(ディセンシア)｜公式サイト</a>
+  </div>
+  <div class="header_nav_l only_pc">
+    <ul>
+      {% for link in linklists.main-menu.links %}
+      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+
+    </ul>
+  </div>
+  <div class="header_nav_l only_sp">
+    <a class="btn_gnav">
+      <span></span>
+    </a>
+  </div>
+  <div class="header_nav_r">
+    <div class="wrap_code only_pc">
+      <input name="ccode" type="text" placeholder="キャンペーン番号の入力" style="font-family: fontplus-unused;">
+      <input name="ccode_next" type="submit" value="進む">
+      <input name="campaign_token" type="hidden" value="1625d152-9826-45f6-94f6-f571dfd5cbfd">
+    </div>
+    <ul>
+      <li class="mypage">
+        <a href="https://www.decencia.co.jp/mypage/mypage.html">マイページ</a>
+      </li>
+      <li class="cart">
+        <a href="https://www.decencia.co.jp/cart/cart.html">
+          <span class="qty">0</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="overlay"></div>
+</header>
