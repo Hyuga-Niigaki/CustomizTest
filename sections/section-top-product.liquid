@@ -1,5 +1,5 @@
 <div class="sec_product">
-		<h2 class="gttl en">PRODUCT</h2>
+		<h2 class="gttl en">{{ section.settings.toppage-product-title }}</h2>
 		<ul>
       {% assign collection = collections[section.settings.toppage-product] %}
       {% for product in collection.products %}
@@ -13,7 +13,7 @@
 			</li>
       {% endfor %}
 		</ul>
-		<a href="https://www.decencia.co.jp/product/decencia/" class="btn_40 en">MORE</a>
+		<a href="{{ collection.url }}" class="btn_40 en">MORE</a>
 	</div>
 
   {% schema %}
@@ -24,6 +24,12 @@
         "type": "collection",
         "id": "toppage-product",
         "label": "コレクション選択"
+      },
+      {
+        "type": "text",
+        "id": "toppage-product-title",
+        "label": "タイトルを入力してください。",
+        "default": "Product"
       }
     ]
   }
