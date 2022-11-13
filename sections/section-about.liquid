@@ -1,0 +1,52 @@
+<div class="sec_about">
+  <h2 class="gttl en">ABOUT DECENCIA</h2>
+  <section class="about">
+    <div class="wrap_img">
+      {%- comment -%}
+        <img src="./角層サイエンスのディセンシア_files/about1_pc.jpg" width="608" height="608" alt="大切なことを大切に。" loading="lazy">
+      {%- endcomment -%}
+      <img src="{{ section.settings.about_image }}" alt="">
+    </div>
+    <div class="wrap_txt">
+      <h3 class="ttl">
+        {%- comment -%}
+          大切なことを大切に。
+        {%- endcomment -%}
+        {{ section.settings.about_text }}
+      </h3>
+      <p>
+        {%- comment -%}
+          私たちが目指しているのは、どんな肌質・肌性でも、いくつになっても強くしなやかで明るい肌になれる、前向きになれるという自信を提供すること。<br>
+          長年培った敏感肌研究を基に、美しい肌を保つ根本的な要素とは何か、肌の美しさに本当に大切なこととは何かを追求し、できるだけ不要なものをそぎ落とし説明可能な要素でストイックに商品を設計しています。
+        {%- endcomment -%}
+        {{ section.settings.about_textarea }}
+      </p>
+      <a href="{{ section.settings.about_url }}" class="btn_40 en">MORE</a>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+  {
+    "name": "Top About",
+    "settings": [
+      {
+        "type": "text",
+        "id": "about_text",
+        "label": "タイトル"
+      }, {
+        "type": "textarea",
+        "id": "about_textarea",
+        "label": "テキストの内容"
+      }, {
+        "type": "image",
+        "id": "about_image",
+        "label": "画像"
+      }, {
+        "type": "page",
+        "id": "about_url",
+        "label": "MOREボタンへのリンク"
+      }
+    ]
+  }
+{% endschema %}
