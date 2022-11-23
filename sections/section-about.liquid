@@ -8,11 +8,7 @@
       {%- comment -%}
         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
       {%- endcomment -%}
-
-      <img src="{{ section.settings.about_image | image_url: width: 100px | placeholder_svg_tag: 'placeholder-svg' }}" alt="">
-      {%- comment -%}
-        {{ section.settings.about_image | image_url: width: 100 | image_tag }}
-      {%- endcomment -%}
+      {{ section.settings.about_image | img_url: "master" | img_tag | aspect-ratio: auto}}
     </div>
     <div class="wrap_txt">
       <h3 class="ttl">
@@ -20,10 +16,6 @@
         {{ section.settings.about_title }}
       </h3>
       <p>
-        {%- comment -%}
-          私たちが目指しているのは、どんな肌質・肌性でも、いくつになっても強くしなやかで明るい肌になれる、前向きになれるという自信を提供すること。<br>
-          長年培った敏感肌研究を基に、美しい肌を保つ根本的な要素とは何か、肌の美しさに本当に大切なこととは何かを追求し、できるだけ不要なものをそぎ落とし説明可能な要素でストイックに商品を設計しています。
-        {%- endcomment -%}
         {{ section.settings.about_textarea }}
       </p>
       <a href="{{ section.settings.about_url }}" class="btn_40 en">MORE</a>
@@ -61,12 +53,6 @@
         "label": "MOREボタンへのリンク"
       }
     ],
-
-// "blocks": [
-// {
-//     "type": ""
-// }
-// ],
     "presets": [
       {
         "name": "TopのAboutページ"
