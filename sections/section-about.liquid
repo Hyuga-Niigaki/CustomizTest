@@ -10,7 +10,9 @@
       {%- endcomment -%}
 
       <img src="{{ section.settings.about_image | image_url: width: 100 | placeholder_svg_tag: 'placeholder-svg' }}" alt="">
-      {{ section.settings.about_image | image_url: width: 100 | image_tag }}
+      {%- comment -%}
+        {{ section.settings.about_image | image_url: width: 100 | image_tag }}
+      {%- endcomment -%}
     </div>
     <div class="wrap_txt">
       <h3 class="ttl">
