@@ -9,7 +9,7 @@
         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
       {%- endcomment -%}
 
-      <img src="{{ section.settings.about_image | image_url: width="100" | placeholder_svg_tag: 'placeholder-svg' }}" alt="">
+      <img src="{{ section.settings.about_image | image_url: width: 100px | placeholder_svg_tag: 'placeholder-svg' }}" alt="">
       {%- comment -%}
         {{ section.settings.about_image | image_url: width: 100 | image_tag }}
       {%- endcomment -%}
