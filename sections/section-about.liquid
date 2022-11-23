@@ -5,13 +5,17 @@
       {%- comment -%}
         <img src="./角層サイエンスのディセンシア_files/about1_pc.jpg" width="608" height="608" alt="大切なことを大切に。" loading="lazy">
       {%- endcomment -%}
-      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-      <img src="{{ section.settings.about_image | image_url: width="100" | placeholder_svg_tag: 'placeholder-svg' }}" alt="">
+      {%- comment -%}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endcomment -%}
+
+      <img src="{{ section.settings.about_image | image_url: width: 100 | placeholder_svg_tag: 'placeholder-svg' }}" alt="">
+      {{ section.settings.about_image | image_url: width: 100 | image_tag }}
     </div>
     <div class="wrap_txt">
       <h3 class="ttl">
 
-        {{ section.settings.about_text }}
+        {{ section.settings.about_title }}
       </h3>
       <p>
         {%- comment -%}
@@ -35,7 +39,7 @@
       },
       {
         "type": "text",
-        "id": "about_text",
+        "id": "about_title",
         "label": "タイトル",
         "default": "デフォルトのタイトル"
       },
