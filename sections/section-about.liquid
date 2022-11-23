@@ -6,13 +6,11 @@
         <img src="./角層サイエンスのディセンシア_files/about1_pc.jpg" width="608" height="608" alt="大切なことを大切に。" loading="lazy">
       {%- endcomment -%}
       {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-      <img src="{{ section.settings.about_image | image_url: width: 100px | placeholder_svg_tag: 'placeholder-svg' }}" alt="">
+      <img src="{{ section.settings.about_image | image_url: width="100" | placeholder_svg_tag: 'placeholder-svg' }}" alt="">
     </div>
     <div class="wrap_txt">
       <h3 class="ttl">
-        {%- comment -%}
-          大切なことを大切に。
-        {%- endcomment -%}
+
         {{ section.settings.about_text }}
       </h3>
       <p>
