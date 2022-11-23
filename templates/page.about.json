@@ -2,8 +2,14 @@
   "sections": {
     "main": {
       "type": "section-about",
-      "settings": { "padding_top": 28, "padding_bottom": 28 }
+      "settings": {
+        "about_title": "デフォルトのタイ",
+        "about_textarea": "デフォルトのテキ",
+        "about_url": ""
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
