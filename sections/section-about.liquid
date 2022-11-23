@@ -31,21 +31,40 @@
     "name": "Top About",
     "settings": [
       {
+        "type": "header",
+        "content": "TOPのABOUTページの設定"
+      },
+      {
         "type": "text",
         "id": "about_text",
-        "label": "タイトル"
-      }, {
+        "label": "タイトル",
+        "default": "デフォルトのタイトル"
+      },
+      {
         "type": "textarea",
         "id": "about_textarea",
-        "label": "テキストの内容"
-      }, {
-        "type": "image",
+        "label": "テキストの内容",
+        "default": "デフォルトのテキスト"
+      },
+      {
+        "type": "image_picker",
         "id": "about_image",
         "label": "画像"
       }, {
         "type": "page",
         "id": "about_url",
         "label": "MOREボタンへのリンク"
+      }
+    ],
+
+// "blocks": [
+// {
+//     "type": ""
+// }
+// ],
+    "presets": [
+      {
+        "name": "TopのAboutページ"
       }
     ]
   }
