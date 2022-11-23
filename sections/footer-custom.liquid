@@ -33,7 +33,9 @@
 				<a href="https://www.decencia.co.jp/" class="logo">敏感肌化粧品のDECENCIA(ディセンシア)｜公式サイト</a>
 			</div>
 			<ul class="main">
-				<li><a href="https://www.decencia.co.jp/product/">PRODUCT</a></li><li><a href="https://www.decencia.co.jp/brand/">ABOUT</a></li><li><a href="https://www.decencia.co.jp/support/">SUPPORT</a></li>
+         {% for link in linklists.footer.links %}
+      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
 			</ul>
 			<ul class="sub">
 				<li><a href="https://www.decencia.co.jp/service/">ショッピングガイド</a></li><li><a href="https://www.decencia.co.jp/store/">店舗情報</a></li><li><a href="https://www.decencia.co.jp/news/">お知らせ</a></li>
