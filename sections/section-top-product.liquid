@@ -1,0 +1,36 @@
+<div class="sec_product">
+		<h2 class="gttl en">{{ section.settings.toppage-product-title }}</h2>
+		<ul>
+      {% assign collection = collections[section.settings.toppage-product] %}
+      {% for product in collection.products %}
+			<li>
+				<a href="https://www.decencia.co.jp/k091/">
+					<img src="{{product.featured_image.src | img_url: '1920x'}}" width="273" height="273" alt="{{ product.featured_image.alt }}" loading="lazy">
+					<h3 class="ttl">{{ product.title }}</h3>
+					<h4 class="cat">{{ product.metafields.custom._cat }}</h4>
+					<p class="price">{{ product.price | money }}</p>
+				</a>
+			</li>
+      {% endfor %}
+		</ul>
+		<a href="{{ collection.url }}" class="btn_40 en">MORE</a>
+	</div>
+
+  {% schema %}
+  {
+    "name": "トップページプロダクトリスト",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "toppage-product",
+        "label": "コレクション選択"
+      },
+      {
+        "type": "text",
+        "id": "toppage-product-title",
+        "label": "タイトルを入力してください。",
+        "default": "Product"
+      }
+    ]
+  }
+{% endschema %}
