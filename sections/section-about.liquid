@@ -8,7 +8,11 @@
       {%- comment -%}
         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
       {%- endcomment -%}
-      {{ section.settings.about_image | img_url: "master" | img_tag | aspect-ratio: auto}}
+
+      <img src="{{ section.settings.about_image | img_url: 'master' }}" alt="">
+      {%- comment -%}
+        {{ section.settings.about_image | image_url: width: 100 | image_tag }}
+      {%- endcomment -%}
     </div>
     <div class="wrap_txt">
       <h3 class="ttl">
