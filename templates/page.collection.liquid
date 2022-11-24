@@ -1,55 +1,3 @@
-<div class="cont_gnav">
-	<ul class="gnav_menu">
-		<li class="product">
-			<span class="en">PRODUCT</span>
-			<ul>
-				
-<li class="series">
-	<span class="btn_acc">シリーズから</span>
-	<ul class="cont_acc">
-		<li><a href="https://www.decencia.co.jp/product/decencia/"><div class="inner"><p>DECENCIA</p><span>エイジングケア</span></div></a></li><li><a href="https://www.decencia.co.jp/product/decency/"><div class="inner"><p>decency</p><span>プレミアムケア</span></div></a></li><li><a href="https://www.decencia.co.jp/product/tsutsumu/"><div class="inner"><p>tsutsumu</p><span>センシティブケア</span></div></a></li><li><a href="https://www.decencia.co.jp/product/saeru/"><div class="inner"><p>saeru</p><span>ホワイトニングケア</span></div></a></li><li><a href="https://www.decencia.co.jp/product/ayanasu/"><div class="inner"><p>ayanasu</p><span>エイジングケア</span></div></a></li><li><a href="https://www.decencia.co.jp/product/series-others/"><div class="inner"><p>OTHERS</p></div></a></li>
-	</ul>
-</li>
-<li class="category">
-	<span class="btn_acc">カテゴリから</span>
-	<ul class="cont_acc">
-		<li><a href="https://www.decencia.co.jp/product/trial/">トライアルセット</a></li><li><a href="https://www.decencia.co.jp/product/face-wash/">クレンジング・洗顔</a></li><li><a href="https://www.decencia.co.jp/product/lotion/">化粧水</a></li><li><a href="https://www.decencia.co.jp/product/cream/">クリーム</a></li><li><a href="https://www.decencia.co.jp/product/essence/">美容液</a></li><li><a href="https://www.decencia.co.jp/product/item-others/">その他</a></li><li><a href="https://www.decencia.co.jp/feature/awards/">ベストコスメ受賞商品</a></li>
-	</ul>
-</li>
-<li class="trouble">
-	<span class="btn_acc">肌悩みから</span>
-	<ul class="cont_acc">
-		<li><a href="https://www.decencia.co.jp/product/problems01/">高敏感肌</a></li><li><a href="https://www.decencia.co.jp/product/problems02/">保湿・乾燥</a></li><li><a href="https://www.decencia.co.jp/product/problems03/">シミ・くすみ</a></li><li><a href="https://www.decencia.co.jp/product/problems04/">シワ</a></li><li><a href="https://www.decencia.co.jp/product/problems05/">肌荒れ</a></li><li><a href="https://www.decencia.co.jp/product/problems06/">花粉</a></li><li><a href="https://www.decencia.co.jp/product/problems07/">日焼け</a></li>
-	</ul>
-</li>
-<li class="all">
-	<a href="https://www.decencia.co.jp/product/">すべての商品</a>
-</li>
-			</ul>
-		</li>
-		<li class="about"><a href="https://www.decencia.co.jp/brand/" class="en">ABOUT</a></li>
-		<li class="support"><a href="https://www.decencia.co.jp/support/" class="en">SUPPORT</a></li>
-	</ul>
-	<div class="wrap_code">
-		<input name="ccode" type="text" placeholder="キャンペーン番号の入力">
-		<input name="ccode_next" type="submit" value="進む">
-		<input name="campaign_token" type="hidden" value="1625d152-9826-45f6-94f6-f571dfd5cbfd">
-	</div>
-	<div class="snav">
-		<ul>
-			<li><a href="https://www.decencia.co.jp/service/">ショッピングガイド</a></li><li><a href="https://www.decencia.co.jp/store/">店舗情報</a></li><li><a href="https://www.decencia.co.jp/news/">お知らせ</a></li>
-		</ul>
-		<ul>
-			<li><a href="https://www.decencia.co.jp/company/">会社概要</a></li><li><a href="https://www.decencia.co.jp/terms_service/">ご利用規約</a></li><li><a href="https://www.decencia.co.jp/inscription_law/">特定商取引法</a></li><li><a href="https://www.decencia.co.jp/recruit/">採用情報</a></li><li><a href="https://www.decencia.co.jp/terms_privacy/">プライバシーポリシー</a></li><li><a href="https://www.decencia.co.jp/sitemap/">サイトマップ</a></li>
-		</ul>
-	</div>
-	<div class="bottom">
-		<ul>
-			<li class="ig"><a href="https://www.instagram.com/decencia_official/" target="_blank">Instagram</a></li><li class="ln"><a href="https://page.line.me/gdq9960n" target="_blank">Line</a></li><li class="fb"><a href="https://www.facebook.com/decenciainc/" target="_blank">Facebook</a></li><li class="tw"><a href="https://twitter.com/decenciainc/" target="_blank">Twitter</a></li><li class="yt"><a href="https://www.youtube.com/channel/UCrvtWX6RYx1gmzMDFMtIzxg" target="_blank">YouTube</a></li>
-		</ul>
-	</div>
-</div>
-
 <!-- contents -->
 <div class="container">
 	<h1 class="pttl en">PRODUCT</h1>
@@ -102,7 +50,25 @@
 </li>
 		</ul>
 	</div>
+	{% for collection in collections  %}
 	<div class="sec_product">
+		<h2 class="gttl en">{{ collection.title }}</h2>
+	{% assign products = collection.products %}
+	<ul>
+	{%- for product in products -%}
+		<li>
+				<a href="{{ product.url }}">
+					<img src="{{ product.featured_image | img_url: '1980x' }}" alt="ディセンシア クレンジング クリーム">
+					<h3 class="ttl">{{ product.title }}</h3>
+					<h4 class="cat">{{ product.metafields.custom._cat }}</h4>
+					<p class="price">{{ product.price | money }}</p>
+				</a>
+			</li>
+	{%- endfor -%}
+	</ul>
+	</div>
+	{% endfor %}
+	{%- comment -%} <div class="sec_product">
 		<h2 class="gttl en">DECENCIA</h2>
 		<ul>
 			<li>
@@ -179,261 +145,7 @@
 			</li>
 		</ul>
 		<a href="https://www.decencia.co.jp/product/decencia/" class="btn_40 en">MORE</a>
-	</div>
-	<div class="sec_product">
-		<h2 class="gttl en">decency</h2>
-		<ul>
-			<li>
-				<a href="https://www.decencia.co.jp/k070/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k070_squ.png" alt="ディセンシー ローション">
-					<h3 class="ttl">ディセンシー ローション</h3>
-					<h4 class="cat">医薬部外品＜敏感肌用化粧液＞</h4>
-					<p class="price">125mL ¥9,900 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k071/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k071_squ.png" alt="ディセンシー デイエッセンス">
-					<h3 class="ttl">ディセンシー デイエッセンス</h3>
-					<h4 class="cat">医薬部外品＜敏感肌用美容液＞</h4>
-					<p class="price">30mL ¥10,890 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k057/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k057_squ.png" alt="ディセンシー エッセンス">
-					<h3 class="ttl">ディセンシー エッセンス</h3>
-					<h4 class="cat">医薬部外品＜敏感肌用美容液＞</h4>
-					<p class="price">30g ¥11,880 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k072/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k072_squ.png" alt="ディセンシー クリーム">
-					<h3 class="ttl">ディセンシー クリーム</h3>
-					<h4 class="cat">医薬部外品＜敏感肌用クリーム＞</h4>
-					<p class="price">30g ¥10,890 (税込) ～</p>
-				</a>
-			</li>
-		</ul>
-		<a href="https://www.decencia.co.jp/product/decency/" class="btn_40 en">MORE</a>
-	</div>
-	<div class="sec_product">
-		<h2 class="gttl en">tsutsumu</h2>
-		<ul>
-			<li>
-				<a href="https://www.decencia.co.jp/k004/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k004_squ.png" alt="つつむ ジェントル クレンジング">
-					<h3 class="ttl">つつむ ジェントル クレンジング</h3>
-					<h4 class="cat">＜敏感肌用クレンジングクリーム＞</h4>
-					<p class="price">100g ¥2,178 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k021/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k021_squ.png" alt="つつむ ジェントル クリームウォッシュ">
-					<h3 class="ttl">つつむ ジェントル クリームウォッシュ</h3>
-					<h4 class="cat">＜敏感肌用洗顔フォーム＞</h4>
-					<p class="price">100g ¥1,782 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k065/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k065_squ.png" alt="つつむ ジェントル ウォッシュ">
-					<h3 class="ttl">つつむ ジェントル ウォッシュ</h3>
-					<h4 class="cat">＜敏感肌用洗顔石けん＞</h4>
-					<p class="price">80g ¥1,782 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k024/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k024_squ.png" alt="つつむ ローションセラム E">
-					<h3 class="ttl">つつむ ローションセラム E</h3>
-					<h4 class="cat">＜敏感肌用化粧液＞</h4>
-					<p class="price">120mL ¥3,366 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k001/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k001_squ.png" alt="つつむ フェイスクリーム">
-					<h3 class="ttl">つつむ フェイスクリーム</h3>
-					<h4 class="cat">＜敏感肌用保湿クリーム＞</h4>
-					<p class="price">30g ¥2,970 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k017/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k017_squ.png" alt="つつむ フェイスクリーム R1">
-					<h3 class="ttl">つつむ フェイスクリーム R1</h3>
-					<h4 class="cat">＜敏感肌用保湿クリーム＞</h4>
-					<p class="price">30g ¥2,970 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k022/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k022_squ.png" alt="つつむ モイスト フェイスマスク（5枚入）">
-					<h3 class="ttl">つつむ モイスト フェイスマスク（5枚入）</h3>
-					<h4 class="cat">＜敏感肌用保湿マスク＞</h4>
-					<p class="price">22mL×5枚 ¥3,465 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k003/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k003_squ.png" alt="つつむ デイ モイスチャーヴェール">
-					<h3 class="ttl">つつむ デイ モイスチャーヴェール</h3>
-					<h4 class="cat">＜敏感肌用日中用保湿クリーム＞</h4>
-					<p class="price">25g ¥2,772 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k827/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k827_squ.png" alt="つつむ トライアルセット">
-					<h3 class="ttl">つつむ トライアルセット</h3>
-					<h4 class="cat"></h4>
-					<p class="price"> ¥980 (税込)</p>
-				</a>
-			</li>
-		</ul>
-		<a href="https://www.decencia.co.jp/product/tsutsumu/" class="btn_40 en">MORE</a>
-	</div>
-	<div class="sec_product">
-		<h2 class="gttl en">ayanasu</h2>
-		<ul>
-			<li>
-				<a href="https://www.decencia.co.jp/k076/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k076_squ.png" alt="アヤナス リンクルＯ／Ｌ コンセントレート">
-					<h3 class="ttl">アヤナス リンクルＯ／Ｌ コンセントレート</h3>
-					<h4 class="cat">医薬部外品＜敏感肌用オイル状美容液＞</h4>
-					<p class="price">30mL ¥6,435 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k080/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k080_squ.png" alt="アヤナス リンクルO/L フェイスマスク コンセントレート (6枚入)">
-					<h3 class="ttl">アヤナス リンクルO/L フェイスマスク コンセントレート (6枚入)</h3>
-					<h4 class="cat">医薬部外品＜敏感肌用マスク＞</h4>
-					<p class="price">1枚入(18mL)×6包 ¥6,435 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k052/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k052_squ.png" alt="アヤナス アイクリーム コンセントレート">
-					<h3 class="ttl">アヤナス アイクリーム コンセントレート</h3>
-					<h4 class="cat">＜敏感肌用アイクリーム＞</h4>
-					<p class="price">15g ¥4,950 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k086/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k086_squ.png" alt="アヤナス リンクルO／L BBエッセンス">
-					<h3 class="ttl">アヤナス リンクルO／L BBエッセンス</h3>
-					<h4 class="cat">＜敏感肌用化粧下地・ファンデーション＞</h4>
-					<p class="price">25g ¥4,455 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k079/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k079_squ.png" alt="アヤナス モイストバリア ミスト">
-					<h3 class="ttl">アヤナス モイストバリア ミスト</h3>
-					<h4 class="cat">＜敏感肌用ミスト化粧水＞</h4>
-					<p class="price">50mL ¥2,673 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k085/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k085_squ.png" alt="アヤナス ハンドクリーム コンセントレート">
-					<h3 class="ttl">アヤナス ハンドクリーム コンセントレート</h3>
-					<h4 class="cat">＜敏感肌用ハンドクリーム＞</h4>
-					<p class="price">35g ¥3,850 (税込) </p>
-				</a>
-			</li>
-		</ul>
-		<a href="https://www.decencia.co.jp/product/ayanasu/" class="btn_40 en">MORE</a>
-	</div>
-	<div class="sec_product">
-		<h2 class="gttl en">saeru</h2>
-		<ul>
-			<li>
-				<a href="https://www.decencia.co.jp/k058/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k058_squ.png" alt="サエル ホワイトニング ローション コンセントレート">
-					<h3 class="ttl">サエル ホワイトニング ローション コンセントレート</h3>
-					<h4 class="cat">医薬部外品＜敏感肌用化粧液＞</h4>
-					<p class="price">125mL ¥4,950 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k077/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k077_squ.png" alt="サエル ホワイトニング エッセンス コンセントレート EX">
-					<h3 class="ttl">サエル ホワイトニング エッセンス コンセントレート EX</h3>
-					<h4 class="cat">医薬部外品＜敏感肌用美容液＞</h4>
-					<p class="price">36mL ¥7,425 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k062/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k062_squ.png" alt="サエル ホワイトニング クリーム コンセントレート">
-					<h3 class="ttl">サエル ホワイトニング クリーム コンセントレート</h3>
-					<h4 class="cat">医薬部外品＜敏感肌用クリーム＞</h4>
-					<p class="price">30g ¥5,445 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k064/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k064_squ.png" alt="サエル ホワイト CCクリーム コンセントレート">
-					<h3 class="ttl">サエル ホワイト CCクリーム コンセントレート</h3>
-					<h4 class="cat">＜敏感肌用日中用クリーム・化粧下地＞</h4>
-					<p class="price">25g ¥4,455 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k831/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k831_squ.png" alt="サエル トライアルセット">
-					<h3 class="ttl">サエル トライアルセット</h3>
-					<h4 class="cat"></h4>
-					<p class="price"> ¥980 (税込)</p>
-				</a>
-			</li>
-		</ul>
-		<a href="https://www.decencia.co.jp/product/saeru/" class="btn_40 en">MORE</a>
-	</div>
-	<div class="sec_product">
-		<h2 class="gttl en">OTHERS</h2>
-		<ul>
-			<li>
-				<a href="https://www.decencia.co.jp/k040/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k040_squ.png" alt="スキンアップ リキッドクレンズ">
-					<h3 class="ttl">スキンアップ リキッドクレンズ</h3>
-					<h4 class="cat">＜敏感肌用リキッドクレンジング＞</h4>
-					<p class="price">120mL ¥2,475 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k041/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k041_squ.png" alt="スキンアップ クリームウォッシュ">
-					<h3 class="ttl">スキンアップ クリームウォッシュ</h3>
-					<h4 class="cat">＜敏感肌用洗顔フォーム＞</h4>
-					<p class="price">100g ¥1,980 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k055/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k055_squ.png" alt="エンリッチ ブースターセラム">
-					<h3 class="ttl">エンリッチ ブースターセラム</h3>
-					<h4 class="cat">＜敏感肌用導入美容液＞</h4>
-					<p class="price">36mL ¥6,930 (税込) ～</p>
-				</a>
-			</li>
-			<li>
-				<a href="https://www.decencia.co.jp/k910/">
-					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k910_squ.png" alt="ディセンシア オリジナル スパチュラ">
-					<h3 class="ttl">ディセンシア オリジナル スパチュラ</h3>
-					<h4 class="cat"></h4>
-					<p class="price">1本 ¥330 (税込) </p>
-				</a>
-			</li>
-		</ul>
-		<a href="https://www.decencia.co.jp/product/series-others/" class="btn_40 en">MORE</a>
-	</div>
+	</div> {%- endcomment -%}
 	<div class="sec_contents series">
 		<h2 class="gttl en">RELATED CONTENTS</h2>
 		<ul>
