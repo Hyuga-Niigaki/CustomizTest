@@ -51,6 +51,7 @@
 		</ul>
 	</div>
 	{% for collection in collections  %}
+	{% if collection.all_products_count > 1 %}
 	<div class="sec_product">
 		<h2 class="gttl en">{{ collection.title }}</h2>
 	{% assign products = collection.products %}
@@ -67,6 +68,7 @@
 	{%- endfor -%}
 	</ul>
 	</div>
+	{% endif %}
 	{% endfor %}
 	{%- comment -%} <div class="sec_product">
 		<h2 class="gttl en">DECENCIA</h2>
