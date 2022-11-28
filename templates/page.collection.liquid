@@ -63,6 +63,7 @@
 	</div>
 	{% for collection in collections  %}
 	{% if collection.all_products_count > 1 %}
+	{%- if collection.title != 'all_products' -%}
 	<div class="sec_product">
 		<h2 class="gttl en">{{ collection.title }}</h2>
 	{% assign products = collection.products %}
@@ -78,8 +79,9 @@
 			</li>
 	{%- endfor -%}
 	</ul>
-	<a href="https://www.decencia.co.jp/product/ayanasu/" class="btn_40 en">MORE</a>
+	<a href="{{ collection.url }}" class="btn_40 en">MORE</a>
 	</div>
+	{%- endif -%}
 	{% endif %}
 	{% endfor %}
 	{%- comment -%} <div class="sec_product">
