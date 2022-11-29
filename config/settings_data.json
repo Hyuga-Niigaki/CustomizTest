@@ -221,6 +221,71 @@
           "toppage-product": "saeru",
           "toppage-product-title": "Product"
         }
+      },
+      "custom-search-menu": {
+        "type": "custom-search-menu",
+        "blocks": {
+          "b7d25cfc-b4a5-435e-bcbc-1f86ba5deb52": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "トライアルセット",
+              "cat_url": "cat__トライアルセット"
+            }
+          },
+          "c5503d61-2e4b-4f25-898b-7601798c7657": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "",
+              "cat_url": ""
+            }
+          },
+          "14fd1884-6748-4b0f-a028-d4e3a8fd31da": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "",
+              "cat_url": ""
+            }
+          },
+          "15271f83-e076-4b3b-bd00-ce9f1e2a1519": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "",
+              "cat_url": ""
+            }
+          },
+          "ad20b595-bf1f-42dc-bf22-d71470394616": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "",
+              "cat_url": ""
+            }
+          },
+          "64799838-2d6d-421b-8b06-95f57a64e224": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "",
+              "cat_url": ""
+            }
+          },
+          "37ac27ef-d6f4-41bf-8428-80c922f036f8": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "",
+              "cat_url": ""
+            }
+          }
+        },
+        "block_order": [
+          "b7d25cfc-b4a5-435e-bcbc-1f86ba5deb52",
+          "c5503d61-2e4b-4f25-898b-7601798c7657",
+          "14fd1884-6748-4b0f-a028-d4e3a8fd31da",
+          "15271f83-e076-4b3b-bd00-ce9f1e2a1519",
+          "ad20b595-bf1f-42dc-bf22-d71470394616",
+          "64799838-2d6d-421b-8b06-95f57a64e224",
+          "37ac27ef-d6f4-41bf-8428-80c922f036f8"
+        ],
+        "settings": {
+        }
       }
     },
     "content_for_index": [
