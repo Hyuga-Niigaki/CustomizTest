@@ -241,19 +241,19 @@
     {{ 'jquery.datetimepicker.css' | asset_url | stylesheet_tag }}
     {{ 'jquery.toast.css' | asset_url | stylesheet_tag }}
 
-    {% if template == index %}
+    {% if template == 'index' %}
     {{ 'home.css' | asset_url | stylesheet_tag }}
     {% endif %}
 
-    {% if template == about %}
+    {% if template == 'about' %}
     {{ 'brand.css' | asset_url | stylesheet_tag }}
     {% endif %}
 
-    {% if template == cart %}
+    {% if template == 'cart' %}
     {{ 'cart.css' | asset_url | stylesheet_tag }}
     {% endif %}
 
-    {% if template == product %}
+    {% if template == 'product' %}
     {{ 'single.css' | asset_url | stylesheet_tag }}
     {% endif %}
 
