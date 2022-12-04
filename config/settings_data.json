@@ -342,6 +342,29 @@
         ],
         "settings": {
         }
+      },
+      "custom-related": {
+        "type": "custom-related",
+        "blocks": {
+          "ffc2d063-af28-4b7c-b737-5d623608bd47": {
+            "type": "related-product",
+            "settings": {
+              "custom-article": "related-contents\/ポーラ研究所の確かな技術-最高水準の製造技術"
+            }
+          },
+          "a3c13aac-7da2-478f-850e-df0d812d1ad3": {
+            "type": "related-product",
+            "settings": {
+              "custom-article": "related-contents\/使い続けるほどに-素肌そのものが美しく-1-980円のトライアルセット"
+            }
+          }
+        },
+        "block_order": [
+          "ffc2d063-af28-4b7c-b737-5d623608bd47",
+          "a3c13aac-7da2-478f-850e-df0d812d1ad3"
+        ],
+        "settings": {
+        }
       }
     },
     "content_for_index": [
