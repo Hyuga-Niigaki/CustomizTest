@@ -221,6 +221,127 @@
           "toppage-product": "saeru",
           "toppage-product-title": "Product"
         }
+      },
+      "custom-search-menu": {
+        "type": "custom-search-menu",
+        "blocks": {
+          "b7d25cfc-b4a5-435e-bcbc-1f86ba5deb52": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "トライアルセット",
+              "cat_url": "cat__トライアルセット"
+            }
+          },
+          "c5503d61-2e4b-4f25-898b-7601798c7657": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "クレンジング・洗顔",
+              "cat_url": "cat__クレンジング・洗顔"
+            }
+          },
+          "14fd1884-6748-4b0f-a028-d4e3a8fd31da": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "化粧水",
+              "cat_url": "cat__化粧水"
+            }
+          },
+          "15271f83-e076-4b3b-bd00-ce9f1e2a1519": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "クリーム",
+              "cat_url": "cat__クリーム"
+            }
+          },
+          "ad20b595-bf1f-42dc-bf22-d71470394616": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "美容液",
+              "cat_url": "cat__美容液"
+            }
+          },
+          "64799838-2d6d-421b-8b06-95f57a64e224": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "その他",
+              "cat_url": "cat__その他"
+            }
+          },
+          "37ac27ef-d6f4-41bf-8428-80c922f036f8": {
+            "type": "cat",
+            "settings": {
+              "cat_menu": "ベストコスメ受賞商品",
+              "cat_url": "cat___ベストコスメ受賞商品"
+            }
+          },
+          "590d0e75-b974-4182-9e15-12caca618983": {
+            "type": "prob",
+            "settings": {
+              "prob_menu": "高敏感肌",
+              "prob_url": "prob__高敏感肌"
+            }
+          },
+          "b04233b5-e05d-4427-b8fa-494444693b61": {
+            "type": "prob",
+            "settings": {
+              "prob_menu": "保湿・乾燥",
+              "prob_url": "prob__保湿・乾燥"
+            }
+          },
+          "fdfb6cd9-e3a0-44d9-9054-4de66c36da45": {
+            "type": "prob",
+            "settings": {
+              "prob_menu": "シミ・くすみ",
+              "prob_url": "prob__シミ・くすみ"
+            }
+          },
+          "46f9ed70-03f0-4b43-b725-e4467ed4dda4": {
+            "type": "prob",
+            "settings": {
+              "prob_menu": "シワ",
+              "prob_url": "prob__シワ"
+            }
+          },
+          "b968f7b2-6222-4672-ac0c-ba37f355d3d0": {
+            "type": "prob",
+            "settings": {
+              "prob_menu": "肌荒れ",
+              "prob_url": "prob__肌荒れ"
+            }
+          },
+          "6a762a9e-a112-4fac-9f5b-5b95e64df641": {
+            "type": "prob",
+            "settings": {
+              "prob_menu": "花粉",
+              "prob_url": "prob__花粉"
+            }
+          },
+          "4f11db01-127b-43e8-a5c9-86b325b16f78": {
+            "type": "prob",
+            "settings": {
+              "prob_menu": "日焼け",
+              "prob_url": "prob__日焼け"
+            }
+          }
+        },
+        "block_order": [
+          "b7d25cfc-b4a5-435e-bcbc-1f86ba5deb52",
+          "c5503d61-2e4b-4f25-898b-7601798c7657",
+          "14fd1884-6748-4b0f-a028-d4e3a8fd31da",
+          "15271f83-e076-4b3b-bd00-ce9f1e2a1519",
+          "ad20b595-bf1f-42dc-bf22-d71470394616",
+          "64799838-2d6d-421b-8b06-95f57a64e224",
+          "37ac27ef-d6f4-41bf-8428-80c922f036f8",
+          "590d0e75-b974-4182-9e15-12caca618983",
+          "b04233b5-e05d-4427-b8fa-494444693b61",
+          "fdfb6cd9-e3a0-44d9-9054-4de66c36da45",
+          "46f9ed70-03f0-4b43-b725-e4467ed4dda4",
+          "b968f7b2-6222-4672-ac0c-ba37f355d3d0",
+          "6a762a9e-a112-4fac-9f5b-5b95e64df641",
+          "4f11db01-127b-43e8-a5c9-86b325b16f78"
+        ],
+        "settings": {
+        }
       }
     },
     "content_for_index": [
