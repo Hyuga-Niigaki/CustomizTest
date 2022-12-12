@@ -180,8 +180,8 @@
         "column1": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "title": "マルチカラムのコラムのタイトル",
+            "text": "<p>ここのコラム本文はテーマエディタから書き換え可能<\/p><p>（ここは自主実装部ではなくデフォルトの機能で編集してます。）<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -211,8 +211,8 @@
         "column3"
       ],
       "settings": {
-        "title": "",
-        "heading_size": "h1",
+        "title": "マルチカラムの見出し",
+        "heading_size": "h2",
         "image_width": "third",
         "image_ratio": "adapt",
         "columns_desktop": 3,
