@@ -51,7 +51,7 @@
     "16f463e3-b3e5-4d75-959b-db60bc17c326": {
       "type": "featured-blog",
       "settings": {
-        "heading": "（ここの見出しは変更可能）",
+        "heading": "《FEATUREDのタイトル》（ここの見出しは変更可能）",
         "heading_size": "h2",
         "blog": "featured",
         "post_limit": 4,
