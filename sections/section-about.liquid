@@ -1,0 +1,66 @@
+<div class="sec_about">
+  <h2 class="gttl en">ABOUT DECENCIA</h2>
+  <section class="about">
+    <div class="wrap_img">
+      {%- comment -%}
+        <img src="./角層サイエンスのディセンシア_files/about1_pc.jpg" width="608" height="608" alt="大切なことを大切に。" loading="lazy">
+      {%- endcomment -%}
+      {%- comment -%}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endcomment -%}
+
+      <img src="{{ section.settings.about_image | img_url: 'master' }}" alt="">
+      {%- comment -%}
+        {{ section.settings.about_image | image_url: width: 100 | image_tag }}
+      {%- endcomment -%}
+    </div>
+    <div class="wrap_txt">
+      <h3 class="ttl">
+
+        {{ section.settings.about_title }}
+      </h3>
+      <p>
+        {{ section.settings.about_textarea }}
+      </p>
+      <a href="{{ section.settings.about_url }}" class="btn_40 en">MORE</a>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+  {
+    "name": "Top About",
+    "settings": [
+      {
+        "type": "header",
+        "content": "TOPのABOUTページの設定"
+      },
+      {
+        "type": "text",
+        "id": "about_title",
+        "label": "タイトル",
+        "default": "デフォルトのタイトル"
+      },
+      {
+        "type": "textarea",
+        "id": "about_textarea",
+        "label": "テキストの内容",
+        "default": "デフォルトのテキスト"
+      },
+      {
+        "type": "image_picker",
+        "id": "about_image",
+        "label": "画像"
+      }, {
+        "type": "url",
+        "id": "about_url",
+        "label": "MOREボタンへのリンク"
+      }
+    ],
+    "presets": [
+      {
+        "name": "TopのAboutページ"
+      }
+    ]
+  }
+{% endschema %}
