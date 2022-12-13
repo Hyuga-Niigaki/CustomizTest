@@ -199,13 +199,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<img src="./ディセンシア シリーズ｜角層サイエンスのディセンシア_files/decencia_skincare_a_1_1.jpg" alt="ディセンシア シリーズ">
 		</div>
 	</div>
+
+
+
 	<div class="sec_product">
 		<p class="result">商品数 {{ collection.products_count }}</p>
 		<ul>
 			{% for product in collection.products %}
 			<li>
 				<a href="{{ product.url }}">
-					<img src="{{ product.featured_img | img_url: 'medium' }}" alt="{{ product.title }}">
+					<img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
 					<h3 class="ttl">{{ product.title }}</h3>
 					{% if product.metafields.custom._cat != blank %}<h4 class="cat">{{ product.metafields.custom._cat }}</h4>{% endif %}
 					<p class="price">{{ product.metafields.custom._weight.value }} {{ product.price | money }} ～</p>
