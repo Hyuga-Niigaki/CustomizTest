@@ -26,11 +26,18 @@
     </div>
     <ul>
       <li class="mypage">
-        <a href="https://www.decencia.co.jp/mypage/mypage.html">マイページ</a>
+        <a href="https://www.decencia.co.jp/mypage/mypage.html" class="ti-off">{% render 'icon-account' %}</a>
       </li>
       <li class="cart">
+         {%- liquid
+          if cart == empty
+            render 'icon-cart-empty'
+          else
+            render 'icon-cart'
+          endif
+        -%}
         <a href="https://www.decencia.co.jp/cart/cart.html">
-          <span class="qty">0</span>
+          <span class="qty">{{ cart.item_count }}</span>
         </a>
       </li>
     </ul>

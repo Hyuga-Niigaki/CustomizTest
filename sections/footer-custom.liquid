@@ -40,35 +40,18 @@
         {% endfor %}
       </ul>
       <ul class="sub">
-        <li>
-          <a href="https://www.decencia.co.jp/service/">ショッピングガイド</a>
-        </li>
-        <li>
-          <a href="https://www.decencia.co.jp/store/">店舗情報</a>
-        </li>
-        <li>
-          <a href="https://www.decencia.co.jp/news/">お知らせ</a>
-        </li>
+        {% for link in linklists.footer-subLeft.links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
       </ul>
       <ul class="sub">
-        <li>
-          <a href="https://www.decencia.co.jp/company/">会社概要</a>
-        </li>
-        <li>
-          <a href="https://www.decencia.co.jp/terms_service/">ご利用規約</a>
-        </li>
-        <li>
-          <a href="https://www.decencia.co.jp/inscription_law/">特定商取引法</a>
-        </li>
-        <li>
-          <a href="https://www.decencia.co.jp/recruit/">採用情報</a>
-        </li>
-        <li>
-          <a href="https://www.decencia.co.jp/terms_privacy/">プライバシーポリシー</a>
-        </li>
-        <li>
-          <a href="https://www.decencia.co.jp/sitemap/">サイトマップ</a>
-        </li>
+        {% for link in linklists.footer-subRight.links %}
+          <li>
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          </li>
+        {% endfor %}
       </ul>
     </nav>
     <div class="bottom">
