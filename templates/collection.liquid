@@ -207,8 +207,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<a href="https://www.decencia.co.jp/k087/">
 					<img src="{{ image.src | product_img_url: 'medium' }}" alt="{{ product.title }}">
 					<h3 class="ttl">{{ product.title }}</h3>
-					<h4 class="cat">&lt;{{ product.metafields.custom._cat }}&gt;</h4>
-					<p class="price">120g {{ product.price | money }} ～</p>
+					{% if product.metafields.custom._cat != blank %}<h4 class="cat">&lt;{{ product.metafields.custom._cat }}&gt;</h4>{% endif %}
+					<p class="price">{{ product.metafields.custom._weight }} {{ product.price | money }} ～</p>
 				</a>
 			</li>
 			{% endfor %}
@@ -216,7 +216,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	</div>
 	<div class="sec_search_cat procuct_dropdown_menu only_pc">
 		<div class="wrap_flex">
-			
+
 <section class="series">
 	<p class="ttl">シリーズから探す</p>
 	<ul>
