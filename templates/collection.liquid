@@ -205,9 +205,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			{% for product in collection.products %}
 			<li>
 				<a href="https://www.decencia.co.jp/k087/">
-					<img src="./ディセンシア シリーズ｜角層サイエンスのディセンシア_files/k087_squ.png" alt="ディセンシア クレンジング クリーム">
-					<h3 class="ttl">ディセンシア クレンジング クリーム</h3>
-					<h4 class="cat">&lt;敏感肌用メーク落とし&gt;</h4>
+					<img src="{{ image.src | product_img_url: 'medium' }}" alt="{{ product.title }}">
+					<h3 class="ttl">{{ product.title }}</h3>
+					<h4 class="cat">&lt;{{ product.metafields.custom._cat }}&gt;</h4>
 					<p class="price">120g {{ product.price | money }} ～</p>
 				</a>
 			</li>
