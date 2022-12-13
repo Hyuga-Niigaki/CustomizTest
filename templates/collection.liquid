@@ -204,11 +204,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<ul>
 			{% for product in collection.products %}
 			<li>
-				<a href="https://www.decencia.co.jp/k087/">
-					<img src="{{ image.src | product_img_url: 'medium' }}" alt="{{ product.title }}">
+				<a href="{{ product.url }}">
+					<img src="{{ product.featured_img | img_url: 'medium' }}" alt="{{ product.title }}">
 					<h3 class="ttl">{{ product.title }}</h3>
-					{% if product.metafields.custom._cat != blank %}<h4 class="cat">&lt;{{ product.metafields.custom._cat }}&gt;</h4>{% endif %}
-					<p class="price">{{ product.metafields.custom._weight }} {{ product.price | money }} ～</p>
+					{% if product.metafields.custom._cat != blank %}<h4 class="cat">{{ product.metafields.custom._cat }}</h4>{% endif %}
+					<p class="price">{{ product.metafields.custom._weight.value }} {{ product.price | money }} ～</p>
 				</a>
 			</li>
 			{% endfor %}
