@@ -598,7 +598,7 @@
       }
     },
     "featured-blog": {
-      "name": "ブログ記事",
+      "name": "ブログ記事(見出し表示)",
       "settings": {
         "heading": {
           "label": "見出し"
@@ -627,7 +627,7 @@
         }
       },
       "presets": {
-        "name": "ブログ記事"
+        "name": "ブログ（見出し表示）"
       }
     },
     "featured-collection": {
