@@ -14,127 +14,384 @@
 
     Usage:
     {% render 'article-card' blog: blog, article: article, show_image: section.settings.show_image %}
-{% endcomment %}
 
-{%- if article and article != empty -%}
-  {%- liquid
-    assign ratio = 1
-    if media_aspect_ratio != nil
-      assign ratio = media_aspect_ratio
-    endif
-  -%}
-  <div class="article-card-wrapper card-wrapper underline-links-hover">
-    {% comment %} <article aria-labelledby="Article-{{ article.id }}"> {% endcomment %}
-    <div class="card article-card
-      card--{{ settings.blog_card_style }}
-      {% if media_height and media_height != 'adapt' %} article-card__image--{{ media_height }}{% endif %}
-      {% if article.image and show_image %} card--media{% else %} card--text{% endif %}
-      {% if settings.blog_card_style == 'card' %} color-{{ settings.blog_card_color_scheme }} gradient{% endif %}
-      {% if settings.blog_card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio{% endif %}"
-      style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
-    >
-      <div class="card__inner {% if settings.blog_card_style == 'standard' %} color-{{ settings.blog_card_color_scheme }} gradient{% endif %}{% if article.image and show_image or settings.blog_card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
-        {%- if show_image == true and article.image -%}
-          <div class="article-card__image-wrapper card__media">
-            <div class="article-card__image media media--hover-effect" {% if section.settings.media_height == 'adapt' %} style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"{% endif %}>
-              {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
-              <img
-                srcset="{%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
-                  {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
-                  {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
-                  {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
-                  {%- if article.image.src.width >= 1000 -%}{{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
-                  {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
-                  {{ article.image.src | image_url }} {{ article.image.src.width }}w"
-                src="{{ article.image.src | image_url: width: 533 }}"
-                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
-                alt="{{ article.image.src.alt | escape }}"
-                class="motion-reduce"
-                {% unless lazy_load == false %}loading="lazy"{% endunless %}
-                width="{{ article.image.width }}"
-                height="{{ article.image.height }}"
-              >
-              {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
-            </div>
-          </div>
-        {%- endif -%}
-        <div class="card__content">        
-          <div class="card__information">
-            <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
-              <a href="{{ article.url }}" class="full-unstyled-link">
-                {{ article.title | truncate: 50 | escape }}
-              </a>
-            </h3>
-            <div class="article-card__info caption-with-letter-spacing h5">
-              {%- if show_date -%}
-                <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
-              {%- endif -%}
-              {%- if show_author -%}
-                <span>{{ article.author }}</span>
-              {%- endif -%}
-            </div>
-            {%- if show_excerpt -%}
-              {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
-                <p class="article-card__excerpt rte-width">
-                  {%- if article.excerpt.size > 0 -%}
-                    {{ article.excerpt | strip_html | truncatewords: 30 }}
-                  {%- else -%}
-                    {{ article.content | strip_html | truncatewords: 30 }}
-                  {%- endif -%}
-                </p>
-              {%- endif -%}
-              <div class="article-card__footer">
-                {%- if article.comments_count > 0 and blog.comments_enabled? -%}
-                  <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
-                {%- endif -%}
+  和訳
+  画像を表示するかどうかを設定して、特定のブログの記事カードをレンダリングします。
+  受け入れます: 
+  - ブログ: {Object} ブログ オブジェクト 
+  - 記事: {Object} 記事オブジェクト 
+  - media_aspect_ratio: {String} この設定は、表示されている場合、記事の画像の縦横比を変更します記事画像。 media_aspect_ratio をオーバーライドします。 
+  - show_image: {String} 記事の画像を表示するかどうかの設定。含まれていない場合、デフォルトで画像が表示されます 
+  - show_date: {String} 記事の日付を表示するかどうかを設定します。含まれていない場合、デフォルトで画像は表示されません 
+  - show_author: {String} 記事の著者を表示するかどうかを設定します。含まれていない場合、デフォルトでは作成者は表示されません 
+  - show_badge: {String} ブログ バッジを表示するかどうかを設定します。 
+  - lazy_load: {Boolean} 画像は遅延ロードする必要があります。デフォルト: true (オプション) 
+  使用法: {% render 'article-card' blog: blog, article: article, show_image: section.settings.show_image %}
+
+  {% endcomment %}
+
+  {%- if article and article != empty -%}
+    {% if settings.card_style == 'standard' %} 
+          {% comment %}   画像枠表示をstandardのときだけ出るようにした。これでほぼOK。あとはnews表示の時に正しいHTMLが出ればよい  {% endcomment %}
+          {% if settings.card_style == 'standard' %} 
+            {% comment %}   ここが画像枠の表示。ここをコメントアウトすると画像枠が出なくなる。これをstandardのときだけ出るようにする。  {% endcomment %}
+            {%- liquid
+                assign ratio = 1
+                if media_aspect_ratio != nil
+                  assign ratio = media_aspect_ratio
+                endif
+              -%}
+          {% endif %}
+  
+   {% comment %} ここ直下2行がブログコンテンツが横並びになるための設定 {% endcomment %}
+        <div class="card-wrapper underline-links-hover">
+         <article aria-labelledby="Article-{{ article.id }}"> 
+  
+  
+          <div class="card article-card
+            card--{{ settings.card_style }}
+            {% if media_height and media_height != 'adapt' %} article-card__image--{{ media_height }}{% endif %}
+          {% comment %} ↓ 画像表示ここじゃない {% endcomment %}
+            {% if article.image and show_image %} card--media{% else %} card--text{% endif %} 
+  
+            {% comment %} ここ以下がcardを選んだ場合の挙動 {% endcomment %}
+  
+            {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
+            {% if settings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio{% endif %}"  
+  
+           
+          >
+            {% comment %} ↑の＞のすぐ前に入っていたものを移動してコメントアウト（これが画像枠のコードと思われるため、多分→違うっぽい）。
+            style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;" {% endcomment %}
+  
+  
+            {% comment %} ここがディセンシアのニュースHTML。もろもろ書き換えて見た目調整すべし {% endcomment %}
+            {% if settings.card_style == 'card' %} 
+            
+            <ul id="list_home_page_news">
+        {% comment %} 				
+              <li id="00348">
+                <a href="/news/00348/">
+                    <span class="date">2022.12.12</span>
+                    <p class="sttl">年末年始期間中の営業と商品のお届けについて</p>
+                </a>
+            </li>
+          
+            </ul>
+        {% endcomment %}
+          {% endif %}
+  
+            {% comment %} ここ以下がstandardを選んだ場合の挙動 {% endcomment %}
+            
+            <div class="card__inner {% if settings.card_style == 'standard' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
+  
+              {% if article.image and show_image or settings.card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+  
+  
+        {% comment %} ここに画像表示のコードをねじこんでみる {% endcomment %}
+        {% if settings.card_style == 'standard' %} 
+              
+          {% comment %} これは画像の枠。足してみた {% endcomment %}
+              {% comment %} {%- liquid
+                assign ratio = 1
+                if media_aspect_ratio != nil
+                  assign ratio = media_aspect_ratio
+                endif
+              -%} {% endcomment %}
+  
+              
+            {%- if show_image == true and article.image -%}
+              <div class="article-card__image-wrapper card__media">
+                <div class="article-card__image media media--hover-effect" {% if section.settings.media_height == 'adapt' %} style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"{% endif %}>
+                  {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+                  <img
+                    srcset="{%- if article.image.src.width >= 165 -%}
+                      {{ article.image.src | image_url: width: 165 }} 165w,
+                    {%- endif -%}
+                      {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+                      {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
+                      {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
+                      {%- if article.image.src.width >= 1000 -%}{{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+                      {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+  
+                      {{ article.image.src | image_url }} {{ article.image.src.width }}w"
+                    src="{{ article.image.src | image_url: width: 533 }}"
+                    sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, 
+                    (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                    alt="{{ article.image.src.alt | escape }}"
+                    class="motion-reduce"
+                    {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                    width="{{ article.image.width }}"
+                    height="{{ article.image.height }}"
+                  >
+                  {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
+                </div>
               </div>
             {%- endif -%}
-          </div>
-          {%- if show_badge -%}
-            <div class="card__badge {{ settings.badge_position }}">
-              <span class="badge color-background-1">{{ 'blogs.article.blog' | t }}</span>
-            </div>
-          {%- endif -%}
-        </div>
-      </div>
-      <div class="card__content">
-        <div class="card__information">
-          <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
-            <a href="{{ article.url }}" class="full-unstyled-link">
-              {{ article.title | truncate: 50 | escape }}
-            </a>
-          </h3>
-          <div class="article-card__info caption-with-letter-spacing h5">
-            {%- if show_date -%}
-              <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
-            {%- endif -%}
-            {%- if show_author -%}
-              <span>{{ article.author }}</span>
-            {%- endif -%}
-          </div>
-          {%- if show_excerpt -%}
-            {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
-              <p class="article-card__excerpt rte-width">
-                {%- if article.excerpt.size > 0 -%}
-                  {{ article.excerpt | strip_html | truncatewords: 30 }}
-                {%- else -%}
-                  {{ article.content | strip_html | truncatewords: 30 }}
+        {% endif %}
+  
+        {% comment %}  ★ここが画像表示のコード。ただしコメントアウトしても画像枠は残る。       
+              {%- if show_image == true and article.image -%}
+                <div class="article-card__image-wrapper card__media">
+                  <div class="article-card__image media media--hover-effect" {% if section.settings.media_height == 'adapt' %} style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"{% endif %}>
+                    {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+                    <img
+                      srcset="{%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
+                        {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
+                        {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
+                        {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
+                        {%- if article.image.src.width >= 1000 -%}{{ article.image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+                        {%- if article.image.src.width >= 1500 -%}{{ article.image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+                        {{ article.image.src | image_url }} {{ article.image.src.width }}w"
+                      src="{{ article.image.src | image_url: width: 533 }}"
+                      sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                      alt="{{ article.image.src.alt | escape }}"
+                      class="motion-reduce"
+                      {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                      width="{{ article.image.width }}"
+                      height="{{ article.image.height }}"
+                    >
+                    {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
+                  </div>
+                </div>
+              {%- endif -%}
+        {% endcomment %}
+  
+  
+        {% comment %}   ここはブログ記事機能の見出し画像・テキスト幅を可変するコード。テーマ設定内のスタイル設定次第で可変できるように複製移植（ここの中で分岐にした方がいい？）。 {% endcomment %}
+  
+        {% if settings.card_style == 'standard' %} 
+            <div class="card__content">    
+                <div class="card__information">
+                  <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
+                    <a href="{{ article.url }}" class="full-unstyled-link">
+                      {{ article.title | truncate: 50 | escape }}
+                    </a>
+                  </h3> 
+  
+                  <div class="article-card__info caption-with-letter-spacing h5">
+                    {%- if show_date -%}
+                      <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
+                    {%- endif -%} 
+                  
+                    {%- if show_author -%}
+                      <span>{{ article.author }}</span>
+                    {%- endif -%}
+                  </div>
+                  
+                  {%- if show_excerpt -%}
+                  
+                  {% comment %} ここはstandardブログの本文プレビュー表示 
+                  {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
+                      <p class="article-card__excerpt rte-width">
+                  
+                        {%- if article.excerpt.size > 0 -%}
+                          {{ article.excerpt | strip_html | truncatewords: 30 }}
+                        {%- else -%}
+                          {{ article.content | strip_html | truncatewords: 30 }}
+                        {%- endif -%}
+                      </p>
+                    {%- endif -%}   
+                  {% endcomment %}
+                  
+                    <div class="article-card__footer">
+                      {%- if article.comments_count > 0 and blog.comments_enabled? -%}
+                        <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
+                      {%- endif -%}
+                    </div>
+                    {%- endif -%}
+                </div>
+                
+                {%- if show_badge -%}
+                  <div class="card__badge {{ settings.badge_position }}">
+                    <span class="badge color-background-1">{{ 'blogs.article.blog' | t }}</span>
+                  </div>
                 {%- endif -%}
-              </p>
-            {%- endif -%}
-            <div class="article-card__footer">
-              {%- if article.comments_count > 0 and blog.comments_enabled? -%}
-                <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
+              {% endif %}
+            </div>
+          </div>
+            
+            <div class="card__content">
+              {% comment %} このへん？？ {% endcomment %}
+              <div class="card__information">
+                <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
+                  <div class="article-card__info caption-with-letter-spacing h5">
+            
+                    {% comment %} ここがstandardブログの日付表示有無{% endcomment %}
+                    {%- if show_date -%}
+                      <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
+                    {%- endif -%} 
+          
+                    {%- if show_author -%}
+                      <span>{{ article.author }}</span>
+                    {%- endif -%}
+                  </div>
+  
+                  <a href="{{ article.url }}" class="full-unstyled-link">
+                    {{ article.title | truncate: 50 | escape }}
+                  </a>
+                </h3>
+      
+  
+                  {% comment %} 
+                    <div class="article-card__info caption-with-letter-spacing h5">
+                      {%- if show_date -%}
+                        <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
+                      {%- endif -%}
+                      {%- if show_author -%}
+                        <span>{{ article.author }}</span>
+                      {%- endif -%}
+                    </div> 
+                  {% endcomment %}
+        
+                {%- if show_excerpt -%}
+                  {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
+                    <p class="article-card__excerpt rte-width">
+                    {% comment %}  ※ここがブログ記事本文の冒頭30文字表示らしい。
+                      {%- if article.excerpt.size > 0 -%}
+                        {{ article.excerpt | strip_html | truncatewords: 30 }}
+                      {%- else -%}
+                        {{ article.content | strip_html | truncatewords: 30 }}
+                      {%- endif -%} 
+                    {% endcomment %}
+                    </p>
+                  {%- endif -%}
+        
+                  <div class="article-card__footer">
+                    {%- if article.comments_count > 0 and blog.comments_enabled? -%}
+                      <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+          
+              {%- if show_badge -%}
+                <div class="card__badge {{ settings.badge_position }}">
+                  <span class="badge color-background-1">{{ 'blogs.article.blog' | t }}</span>
+                </div>
+              {%- endif -%}  
+            </div>
+          </div>
+        </div>
+    {%- else -%}
+    {% comment %} ここまでがstandard時の設定 {% endcomment %}
+  
+  
+    {% comment %} ここからcardの場合を挿入 {% endcomment %}
+    {% if settings.card_style == 'card' %} 
+          {% comment %}   ここが画像枠の表示。ここをコメントアウトすると画像枠が出なくなる。これをstandardのときだけ出るようにする。  {% endcomment %}
+         
+          {% comment %} {%- liquid
+              assign ratio = 1
+              if media_aspect_ratio != nil
+                assign ratio = media_aspect_ratio
+              endif
+            -%} {% endcomment %}
+        {% endif %}
+  
+        {% comment %} ここをdivタグことコメントアウトしたら1つ目のブログ日付左横の余計な空白が消えた。
+        <div class="card-wrapper underline-links-hover">
+  <article aria-labelledby="Article-{{ article.id }}"> {% endcomment %}
+  
+  
+        <div class="card article-card
+          card--{{ settings.card_style }}
+          {% if media_height and media_height != 'adapt' %} article-card__image--{{ media_height }}{% endif %}
+        {% comment %} ↓ 画像表示ここじゃない {% endcomment %}
+          {% if article.image and show_image %} card--media{% else %} card--text{% endif %} 
+  
+          {% comment %} ここ以下がcardを選んだ場合の挙動 {% endcomment %}
+  
+          {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
+          {% if settings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio{% endif %}"  
+  
+          style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+        >
+  
+          {% comment %} ここがディセンシアのニュースHTML。もろもろ書き換えて見た目調整すべし {% endcomment %}
+          {% if settings.card_style == 'card' %} 
+          
+          <ul id="list_home_page_news">
+        {% comment %} 				
+            <li id="00348">
+              <a href="/news/00348/">
+                  <span class="date">2022.12.12</span>
+                  <p class="sttl">年末年始期間中の営業と商品のお届けについて</p>
+              </a>
+          </li>
+  
+          </ul>
+        {% endcomment %}
+        {% endif %}
+  
+        
+          </div>
+        </div>
+          
+          <div class="card__content">
+            {% comment %} ここのクラス名card__headingのままだと日付とブログタイトルが縦並びになってしまうのでクラス名を別にして別のCSSが適用されるようにした。→cardのときのみ日付とタイトルが横並び表示 {% endcomment %}
+            <div class="card__information">
+              <h3 class="card__heading__card{% if show_excerpt %} h2{% endif %}">
+                <div class="article-card__info__card caption-with-letter-spacing h5">
+          
+                  {% comment %} ここはfetured.blogの日付。アウトするとすべて日付非表示になる。 {% endcomment %}
+                  {%- if show_date -%}
+                    <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
+                  {%- endif -%}
+  
+                  {%- if show_author -%}
+                    <span>{{ article.author }}</span>
+                  {%- endif -%}
+                </div>
+  
+                <a href="{{ article.url }}" class="full-unstyled-link">
+                  {{ article.title | truncate: 50 | escape }}
+                </a>
+              </h3>
+  
+  
+                {% comment %} 
+                  <div class="article-card__info caption-with-letter-spacing h5">
+                    {%- if show_date -%}
+                      <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
+                    {%- endif -%}
+                    {%- if show_author -%}
+                      <span>{{ article.author }}</span>
+                    {%- endif -%}
+                  </div> 
+                {% endcomment %}
+  
+              {%- if show_excerpt -%}
+                {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
+                  <p class="article-card__excerpt__card rte-width">
+                  {% comment %}  ※ここがブログ記事本文の冒頭30文字表示らしい。
+                    {%- if article.excerpt.size > 0 -%}
+                      {{ article.excerpt | strip_html | truncatewords: 30 }}
+                    {%- else -%}
+                      {{ article.content | strip_html | truncatewords: 30 }}
+                    {%- endif -%} 
+                  {% endcomment %}
+                  </p>
+                {%- endif -%}
+  
+                <div class="article-card__footer">
+                  {%- if article.comments_count > 0 and blog.comments_enabled? -%}
+                    <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
+                  {%- endif -%}
+                </div>
               {%- endif -%}
             </div>
-          {%- endif -%}
-        </div>
-        {%- if show_badge -%}
-          <div class="card__badge {{ settings.badge_position }}">
-            <span class="badge color-background-1">{{ 'blogs.article.blog' | t }}</span>
+  
+            {%- if show_badge -%}
+              <div class="card__badge {{ settings.badge_position }}">
+                <span class="badge color-background-1">{{ 'blogs.article.blog' | t }}</span>
+              </div>
+            {%- endif -%}  
           </div>
-        {%- endif -%}  
-      </div>
-    </div>
-  </div>
-{%- endif -%}
+        </div>
+        </div>
+    
+    {%- endif -%}
+    {% comment %} ここまでcardの場合 {% endcomment %}
+  {%- endif -%}
+  

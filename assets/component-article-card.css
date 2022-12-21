@@ -56,8 +56,18 @@
   padding-right: 2rem;
 }
 
+/* 変更点ここ（prとfs追加） */
 .article-card__info {
   padding-top: 0.4rem;
+  padding-right: 10px;
+  font-size: large;
+}
+
+/* 変更点ここ（prとfs追加） */
+.article-card__info__card {
+  padding-top: 0.4rem;
+  padding-right: 50px;
+  font-size: large;
 }
 
 .article-card__footer {
@@ -73,8 +83,16 @@
   margin-top: auto;
 }
 
+/* 変更点ここ */
 .article-card__excerpt {
   width: 100%;
+  margin-top: 1.2rem;
+}
+
+/* 変更点ここ */
+.article-card__excerpt__card {
+  width: 700px;
+  /* width: 100%; */
   margin-top: 1.2rem;
 }
 
