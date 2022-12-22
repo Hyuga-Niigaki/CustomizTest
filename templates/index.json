@@ -167,7 +167,7 @@
       "settings": {
         "heading": "《JOUNALのタイトル》この見出しも変更可能",
         "heading_size": "h2",
-        "blog": "ニュース",
+        "blog": "journal",
         "post_limit": 4,
         "columns_desktop": 3,
         "color_scheme": "background-1",
