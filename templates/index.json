@@ -178,11 +178,6 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "c1f09c66-fe0e-44e7-98e6-bcbd0adb6b7c": {
-      "type": "featured-blog",
-      "settings": {
-      }
     }
   },
   "order": [
@@ -192,7 +187,6 @@
     "featured_collection",
     "collage",
     "video",
-    "a63b6d27-4b5f-4cea-85c7-bf493ca3123a",
-    "c1f09c66-fe0e-44e7-98e6-bcbd0adb6b7c"
+    "a63b6d27-4b5f-4cea-85c7-bf493ca3123a"
   ]
 }
