@@ -1,0 +1,127 @@
+<div class="sec_search_cat procuct_dropdown_menu only_pc">
+		<div class="wrap_flex">
+			
+<section class="series">
+	<p class="ttl">シリーズから探す</p>
+	<ul>
+		{% for link in linklists.all-collections.links %}
+			{% for collection in collections %}
+				{% if link.title == collection.title %}
+					<li><a href="{{ collection.url }}"><div class="inner"><p>{{ link.title }}</p><span>{{ collection.metafields.custom._subtitle }}</span></div></a></li>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	</ul>
+</section>
+<section class="category">
+	<p class="ttl">カテゴリから探す</p>
+	<ul>
+		{% for block in section.blocks %}
+		{%- case block.type -%}
+			{%- when 'cat' -%}
+				<li><a href="/collections/all/{{ block.settings.cat_url }}">{{ block.settings.cat_menu }}</a></li>
+		{%- endcase -%}
+		{% endfor %}
+	</ul>
+</section>
+<section class="trouble">
+	<p class="ttl">肌悩みから探す</p>
+	<ul>
+		{% for block in section.blocks %}
+		{%- case block.type -%}
+			{%- when 'prob' -%}
+				<li><a href="/collections/all/{{ block.settings.prob_url }}">{{ block.settings.prob_menu }}</a></li>
+		{%- endcase -%}
+		{% endfor %}
+	</ul>
+</section>
+		</div>
+</div>
+	<div class="sec_search_cat only_sp">
+		<ul>
+<li class="series">
+	<span class="btn_acc">シリーズから</span>
+	<ul>
+		{% for link in linklists.all-collections.links %}
+			{% for collection in collections %}
+				{% if link.title == collection.title %}
+					<li><a href="{{ collection.url }}"><div class="inner"><p>{{ link.title }}</p><span>{{ collection.metafields.custom._subtitle }}</span></div></a></li>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	</ul>
+</li>
+<li class="category">
+	<span class="btn_acc">カテゴリから</span>
+	<ul>
+		{% for block in section.blocks %}
+		{%- case block.type -%}
+			{%- when 'cat' -%}
+				<li><a href="/collections/all/{{ block.settings.cat_url }}">{{ block.settings.cat_menu }}</a></li>
+		{%- endcase -%}
+		{% endfor %}
+	</ul>
+</li>
+<li class="trouble">
+	<span class="btn_acc">肌悩みから</span>
+	<ul>
+		{% for link in linklists.all-collections.links %}
+			{% for collection in collections %}
+				{% if link.title == collection.title %}
+					<li><a href="{{ collection.url }}"><div class="inner"><p>{{ link.title }}</p><span>{{ collection.metafields.custom._subtitle }}</span></div></a></li>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	</ul>
+</li>
+<li class="all">
+	<a href="https://www.decencia.co.jp/product/">すべての商品</a>
+</li>
+		</ul>
+	</div>
+
+	{% schema %}
+  {
+    "name": "カスタムメニュー",
+    "settings": [],
+    "blocks": [
+			{
+				"type": "cat",
+				"name": "カテゴリーメニュー追加",
+				"settings": [
+					{
+						"type": "text",
+						"id": "cat_menu",
+						"label": "メニュー項目"
+					},
+					{
+						"type": "text",
+						"id": "cat_url",
+						"label": "タグ名を入力"
+					}
+				]
+			},
+			{
+				"type": "prob",
+				"name": "悩みメニュー追加",
+				"settings": [
+					{
+						"type": "text",
+						"id": "prob_menu",
+						"label": "メニュー項目"
+					},
+					{
+						"type": "text",
+						"id": "prob_url",
+						"label": "タグ名を入力"
+					}
+				]
+			}
+		],
+    "presets": [
+      {
+        "name": "カスタムメニュー"
+      }
+    ]
+  }
+{% endschema %}
