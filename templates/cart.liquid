@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<!-- saved from url=(0041)https://www.decencia.co.jp/cart/cart.html -->
-<html lang="ja"><head><!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script async="" src="./カート｜角層サイエンスのディセンシア_files/saved_resource"></script><script type="text/javascript" async="" src="./カート｜角層サイエンスのディセンシア_files/ytag.js"></script><script type="text/javascript" async="" src="./カート｜角層サイエンスのディセンシア_files/ytag.js"></script><script type="text/javascript" async="" src="./カート｜角層サイエンスのディセンシア_files/config.js"></script><script async="" defer="" src="./カート｜角層サイエンスのディセンシア_files/im-uid.js"></script><script async="" src="./カート｜角層サイエンスのディセンシア_files/set.js"></script><script async="" src="./カート｜角層サイエンスのディセンシア_files/log.js"></script><script async="" src="./カート｜角層サイエンスのディセンシア_files/log.2.js"></script><script type="text/javascript" referrerpolicy="no-referrer-when-downgrade" async="" src="./カート｜角層サイエンスのディセンシア_files/gtm.js"></script><script async="" src="./カート｜角層サイエンスのディセンシア_files/saved_resource(1)"></script> -->
-	<title>カート｜角層サイエンスのディセンシア</title>
-	<meta name="description" content="敏感肌研究からたどり着いた、角層起点のエイジングケア。ポーラ・オルビスグループのDECENCIA（ディセンシア）公式サイト。カートについてはこちらから。">
-	
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 	<link rel="stylesheet" href="./カート｜角層サイエンスのディセンシア_files/reset.css">
 	<link rel="stylesheet" href="./カート｜角層サイエンスのディセンシア_files/slick.css">
 	<link rel="stylesheet" href="./カート｜角層サイエンスのディセンシア_files/common.css">
@@ -107,17 +101,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			
 
 
-			
+
 			<div class="sec_cart">
+				
 				<div class="list_cart">
 					<ul>
-						
+						{% for line_item in cart.items %}
 						<li>
-							<div class="thumb"><a href="https://www.decencia.co.jp/k087/"><img src="./カート｜角層サイエンスのディセンシア_files/k087_hor.png" alt="ディセンシア クレンジング クリーム"></a></div>
+							<div class="thumb"><a href="{{ line_item.url }}"><img src="{{ line_item.image | img_url: '3000x' }}" alt="{{ line_item.product.title }}"></a></div>
 							<div class="info">
-								<h3 class="name">ディセンシア クレンジング クリーム</h3>
-								<p class="unitprice">単価(税込) : 3,850円</p>
-								<p class="campaign">優待適用 : なし</p>
+								<h3 class="name">{{ line_item.product.title }}</h3>
+								<p class="unitprice">単価(税込) : {{ line_item.price | money }}</p>
+								<p class="campaign">{{ line_item.product.metafields.custom._yutai }}</p>
 								
 								
 								<!--
@@ -128,13 +123,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							</div>
 							
 							<div class="quantity"><input type="number" max="10" min="1" id="qty_0" value="1" onchange="chgDetail(&#39;K087&#39;, &#39;936ed355-e11cd-42fc-af10-da160a7057fb&#39;, &#39;f4e5d129-c01fb4-430d-9551-801fd16605b0&#39;, document.getElementById(&#39;qty_0&#39;).value, &#39;&#39;,&#39;2733692&#39;);"></div>
+
+							{%- comment -%} <button class="quantity__button no-js-hidden btn-minus" name="minus" type="button">
+								<span class="visually-hidden"></span>
+								{% render 'icon-minus' %}
+						</button>
+								<input class="quantity__input" type="number" name="updates[]" value="{{ line_item.quantity }}" min="0" id="Quantity-{{ line_item.index | plus:1 }}" data-index="{{ line_item.index | plus:1 }}">
+						<button class="quantity__button no-js-hidden btn-plus" name="plus" type="button">
+								<span class="visually-hidden"></span>
+								{% render 'icon-plus' %}
+						</button> {%- endcomment -%}
 							
 							
-							<div class="price">3,850円</div>
-							<div class="delete"><a href="https://www.decencia.co.jp/cart/cart.html?c_d_id=2733692&amp;c_div=Delete" class="btn_delete">削除</a></div>
+							<div class="price">{{ line_item.final_line_price | money }}</div>
+							<div class="delete"><a href="/cart/change?line={{ forloop.index }}&quantity=0" class="btn_delete">削除</a></div>
 						</li>
-						
+					{% endfor %}
 					</ul>
+					
 					<!--
 					
 					<a href="/cart/cart.html?c_div=Change" class="btn_change_regular_all">すべての定期対象商品を定期購入に変更する</a>
@@ -144,27 +150,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<div class="wrap_purchase">
 					<dl class="list_total">
 						<dt>注文数量</dt>
-						<dd>1点</dd>
+						<dd>{{ cart.item_count }}点</dd>
 						<dt>送料</dt>
 						<dd>無料</dd>
 						<dt>合計(税込)</dt>
-						<dd>3,850円</dd>
+						<dd>{{ cart.total_price | money }}</dd>
 					</dl>
-					<a href="https://www.decencia.co.jp/order/checkout.html" class="btn_cart btn_40 black">ご購入手続きへ</a>
+					<form method="post">
+					<input type="submit" name="checkout" class="btn btn_cart btn_40 black" value="ご購入手続きへ">
+					</form>
+					{%- comment -%} <a href="https://www.decencia.co.jp/order/checkout.html" class="btn_cart btn_40 black">ご購入手続きへ</a> {%- endcomment -%}
 				</div>
+			
 			</div>
 			
 			
 			<div class="wrap_btn">
+				<form method="post"><input type="submit" name="checkout" class="btn btn_cart btn_40 black" value="ご購入手続きへ"></form>
+				{%- comment -%} <button type="submit" id="checkout" class="cart__checkout-button button" name="checkout" form="cart">
+					ご購入手続きへ
+				</button> {%- endcomment -%}
+				{%- comment -%} <a href="https://www.decencia.co.jp/order/checkout.html" class="btn btn_cart btn_40 black">ご購入手続きへ</a> {%- endcomment -%}
 				
-				<a href="https://www.decencia.co.jp/order/checkout.html" class="btn btn_cart btn_40 black">ご購入手続きへ</a>
-				
+
 			</div>
 			<p class="message small">
 				【リフィル対応商品の「定期購入」について】リフィル(交換用)対応商品を定期でお申し込みいただいた場合、2回目以降のお届けは環境に配慮したリフィル(交換用)商品でお届けいたします。容器にセットしてお使いください。
 			</p>
 			<div class="wrap_btn">
-				<a href="https://www.decencia.co.jp/k087/" class="btn btn_back">お買い物に戻る</a>
+				<a href="/collections/all" class="btn btn_back">お買い物に戻る</a>
 			</div>
 		</div>
 	</div>
@@ -222,41 +236,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <input type="hidden" name="cartToken" value="05153e4f-61d1-4e89-8bd9-ebc25e3b717e">
 
-<footer class="footer">
-	<div class="sec_tel">
-		<section>
-			<p class="ttl">お肌相談窓口</p>
-			<p class="sttl">
-				商品の使い方やお肌に関するご相談
-			</p>
-			<a class="num" href="tel:0120-714-565">0120-714-565</a>
-			<p class="fs_10">※月～金10:00～18:00（土日・祝日はお休み）</p>
-		</section>
-		<section>
-			<p class="ttl">ご注文窓口</p>
-			<p class="sttl">
-				ご注文、定期お届けサービスの<br>
-				お届け日・お申し込み商品・コース変更
-			</p>
-			<a class="num" href="tel:0120-714-885">0120-714-885</a>
-			<p class="fs_10">※月～金10:00～19:00／土日・祝日10:00～17:00</p>
-		</section>
-		<section>
-			<p class="ttl">お問い合わせ窓口</p>
-			<p class="sttl">
-				返品・交換、定期お届けサービスの解約、<br>
-				お支払関連、その他
-			</p>
-			<a class="num" href="tel:0120-714-115">0120-714-115</a>
-			<p class="fs_10">※月～金10:00～19:00／土10:00～17:00（日・祝日はお休み）</p>
-		</section>
-	</div>
-	<div class="wrap_nav">
-		<div class="bottom">
-			<p class="copyright">© 2022 DECENCIA Inc.</p>
-		</div>
-	</div>
-</footer>
+
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRTSBV5"
