@@ -202,7 +202,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 	<div class="sec_product">
 		{% assign collection_handle = collection.handle %}
-
 		<p class="result">商品数 {{ collection.products_count }}</p>
 		<ul>
 			{% for product in collection.products %}
@@ -216,7 +215,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				</li>
 			{% endfor %}
 		</ul>
-	</div>
+  </div>
+</div>
+	{% comment %} <div class="sec_product">
+		{% assign collection_saeru = collections['saeru'] %}
+
+		<p class="result">商品数 {{ collection_saeru.products_count }}</p>
+		<ul>
+			{% for product in {{ collection.handle }}.products %}
+				<li>
+					<a href="{{ product.url }}">
+						<img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+						<h3 class="ttl">{{ product.title }}</h3>
+						{% if product.metafields.custom._cat != blank %}<h4 class="cat">{{ collection.metafields.custom._cat }}</h4>{% endif %}
+						<p class="price">{{ product.metafields.custom._weight.value }} {{ product.price | money }} ～</p>
+					</a>
+				</li>
+			{% endfor %}
+		</ul>
+
+	</div> {% endcomment %}
 
 	<div class="sec_search_cat procuct_dropdown_menu only_pc">
 		<div class="wrap_flex">

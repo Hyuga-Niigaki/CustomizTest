@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "section-about",
+      "settings": {
+        "about_title": "デフォルトのタイ",
+        "about_textarea": "デフォルトのテキ",
+        "about_url": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

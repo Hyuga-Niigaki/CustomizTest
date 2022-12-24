@@ -1,0 +1,127 @@
+{% style %}
+@media screen and (min-width: 750px) {
+	.only_sp {
+		margin-bottom: 0;
+	}
+
+	main {
+		background-color: #FAFAFA;
+	}
+}
+{% endstyle %}
+<!-- contents -->
+<div class="container">
+	<h1 class="pttl en">PRODUCT</h1>
+	{% section 'custom-search-menu' %}
+	{% for link in linklists.all-collections.links %}
+	{% for collection in collections  %}
+	{%- if collection.title == link.title -%}
+	<div class="sec_product">
+		<h2 class="gttl en">{{ collection.title }}</h2>
+	{% assign products = collection.products %}
+	<ul>
+	{%- for product in products -%}
+		<li>
+				<a href="{{ product.url }}">
+					<img src="{{ product.featured_image | img_url: '1980x' }}" alt="ディセンシア クレンジング クリーム">
+					<h3 class="ttl">{{ product.title }}</h3>
+					<h4 class="cat">{{ product.metafields.custom._cat }}</h4>
+					<p class="price">{{ product.price | money }}</p>
+				</a>
+			</li>
+	{%- endfor -%}
+	</ul>
+	<a href="{{ collection.url }}" class="btn_40 en">MORE</a>
+	</div>
+	{%- endif -%}
+	{% endfor %}
+	{% endfor %}
+	{%- comment -%} <div class="sec_product">
+		<h2 class="gttl en">DECENCIA</h2>
+		<ul>
+			<li>
+				<a href="https://www.decencia.co.jp/k087/">
+					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k087_squ.png" alt="ディセンシア クレンジング クリーム">
+					<h3 class="ttl">ディセンシア クレンジング クリーム</h3>
+					<h4 class="cat">＜敏感肌用メーク落とし＞</h4>
+					<p class="price">120g ¥3,465 (税込) ～</p>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.decencia.co.jp/k088/">
+					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k088_squ.png" alt="ディセンシア フォーミング ウォッシュ">
+					<h3 class="ttl">ディセンシア フォーミング ウォッシュ</h3>
+					<h4 class="cat">＜敏感肌用洗顔フォーム＞</h4>
+					<p class="price">100g ¥2,970 (税込) ～</p>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.decencia.co.jp/k089/">
+					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k089_squ.png" alt="ディセンシア ローション">
+					<h3 class="ttl">ディセンシア ローション</h3>
+					<h4 class="cat">＜敏感肌用化粧水＞</h4>
+					<p class="price">125mL ¥5,148 (税込) ～</p>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.decencia.co.jp/k094/">
+					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k094_squ.png" alt="ディセンシア モイストＳ／Ｃ コンセントレート">
+					<h3 class="ttl">ディセンシア モイストＳ／Ｃ コンセントレート</h3>
+					<h4 class="cat">医薬部外品＜敏感肌用美容液＞</h4>
+					<p class="price">36mL ¥6,435 (税込) ～</p>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.decencia.co.jp/k076/">
+					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k076_squ.png" alt="アヤナス リンクルＯ／Ｌ コンセントレート">
+					<h3 class="ttl">アヤナス リンクルＯ／Ｌ コンセントレート</h3>
+					<h4 class="cat">医薬部外品＜敏感肌用オイル状美容液＞</h4>
+					<p class="price">30mL ¥6,435 (税込) ～</p>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.decencia.co.jp/k091/">
+					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k091_squ.png" alt="ディセンシア クリーム">
+					<h3 class="ttl">ディセンシア クリーム</h3>
+					<h4 class="cat">＜敏感肌用クリーム＞</h4>
+					<p class="price">30g ¥5,742 (税込) ～</p>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.decencia.co.jp/k093/">
+					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k093_squ.png" alt="ディセンシア デイ エッセンス">
+					<h3 class="ttl">ディセンシア デイ エッセンス</h3>
+					<h4 class="cat">＜敏感肌用日やけ止め美容液＞</h4>
+					<p class="price">25g ¥3,960 (税込) ～</p>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.decencia.co.jp/k839/">
+					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k839_squ.png" alt="ディセンシア トライアルセット Ｓ／Ｃ">
+					<h3 class="ttl">ディセンシア トライアルセット Ｓ／Ｃ</h3>
+					<h4 class="cat"></h4>
+					<p class="price"> ¥1,980 (税込) </p>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.decencia.co.jp/k840/">
+					<img src="./すべての商品｜角層サイエンスのディセンシア_files/k840_squ.png" alt="ディセンシア トライアルセット Ｏ／Ｌ">
+					<h3 class="ttl">ディセンシア トライアルセット Ｏ／Ｌ</h3>
+					<h4 class="cat"></h4>
+					<p class="price"> ¥1,980 (税込) </p>
+				</a>
+			</li>
+		</ul>
+		<a href="https://www.decencia.co.jp/product/decencia/" class="btn_40 en">MORE</a>
+	</div> {%- endcomment -%}
+	{% section 'custom-related' %}
+</div>
+<div class="topicpath">
+	<ul>
+		<li><a href="https://www.decencia.co.jp/">HOME</a></li><li><a href="https://www.decencia.co.jp/product/">商品一覧</a></li>
+	</ul>
+</div>
+<!-- /contents -->
+</div>
+
+<input type="hidden" name="cartToken" value="05153e4f-61d1-4e89-8bd9-ebc25e3b717e">

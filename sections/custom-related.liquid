@@ -1,0 +1,39 @@
+<div class="sec_contents series">
+		<h2 class="gttl en">RELATED CONTENTS</h2>
+		<ul>
+      {% for block in section.blocks %}
+			<li>
+        {% assign article = block.settings.custom-article %}
+				<a href="{{ article.url }}">
+					<img src="{{ article.image.src | img_url: '1980x' }}" alt="">
+					<h3 class="ttl">{{ article.title }}</h3>
+				</a>
+			</li>
+      {% endfor %}
+		</ul>
+	</div>
+
+  {% schema %}
+  {
+    "name": "関連ページセクション",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "related-product",
+        "name": "関連ページ",
+        "settings": [
+          {
+            "type": "article",
+            "id": "custom-article",
+            "label": "記事を選択してください"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "関連ページセクション"
+      }
+    ]
+  }
+{% endschema %}
