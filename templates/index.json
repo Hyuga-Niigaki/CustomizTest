@@ -52,7 +52,7 @@
       
       "type": "section-blog-custom",
       "settings": {
-        "heading": "《FEATUREDのタイトル》（ここの見出しは変更可能）type: をfeatured-blogから書き換え",
+        "heading": "《FEATUREDのタイトル》（ここの見出しは変更可能）",
         "heading_size": "h2",
         "blog": "featured",
         "post_limit": 4,
@@ -175,59 +175,6 @@
         "padding_bottom": 36
       }
     },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "title": "マルチカラムのコラムのタイトル",
-            "text": "<p>ここのコラム本文はテーマエディタから書き換え可能<\/p><p>（ここは自主実装部ではなくデフォルトの機能で編集してます（実装方法の調査目的）。<\/p><p>↓<\/p><p>ここの機能を改変して《NEWS》を作る？？？）<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column1",
-        "column2",
-        "column3"
-      ],
-      "settings": {
-        "title": "マルチカラムの見出し",
-        "heading_size": "h2",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "background-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "a63b6d27-4b5f-4cea-85c7-bf493ca3123a": {
       "type": "section-blog-custom",
       "settings": {
@@ -246,10 +193,9 @@
       }
     },
     "c1f09c66-fe0e-44e7-98e6-bcbd0adb6b7c": {
-
       "type": "section-blog-custom",
       "settings": {
-        "heading": "Blog posts。type: をfeatured-blogから書き換え",
+        "heading": "Blog posts",
         "heading_size": "h1",
         "blog": "ニュース",
         "post_limit": 3,
@@ -271,8 +217,6 @@
     "featured_collection",
     "collage",
     "video",
-    "multicolumn",
-    "a63b6d27-4b5f-4cea-85c7-bf493ca3123a",
-    "c1f09c66-fe0e-44e7-98e6-bcbd0adb6b7c"
+    "a63b6d27-4b5f-4cea-85c7-bf493ca3123a"
   ]
 }
