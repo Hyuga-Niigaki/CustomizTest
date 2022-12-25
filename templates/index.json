@@ -49,9 +49,10 @@
       }
     },
     "16f463e3-b3e5-4d75-959b-db60bc17c326": {
-      "type": "featured-blog",
+      
+      "type": "section-blog-custom",
       "settings": {
-        "heading": "《FEATUREDのタイトル》（ここの見出しは変更可能）",
+        "heading": "《FEATUREDのタイトル》（ここの見出しは変更可能）type: をfeatured-blogから書き換え",
         "heading_size": "h2",
         "blog": "featured",
         "post_limit": 4,
@@ -245,9 +246,10 @@
       }
     },
     "c1f09c66-fe0e-44e7-98e6-bcbd0adb6b7c": {
-      "type": "featured-blog",
+
+      "type": "section-blog-custom",
       "settings": {
-        "heading": "Blog posts",
+        "heading": "Blog posts。type: をfeatured-blogから書き換え",
         "heading_size": "h1",
         "blog": "ニュース",
         "post_limit": 3,
