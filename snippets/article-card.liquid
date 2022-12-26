@@ -332,7 +332,7 @@
             {% comment %} ここのクラス名card__headingのままだと日付とブログタイトルが縦並びになってしまうのでクラス名を別にして別のCSSが適用されるようにした。→cardのときのみ日付とタイトルが横並び表示 {% endcomment %}
             <div class="card__information">
               <h3 class="card__heading__card{% if show_excerpt %} h2{% endif %}">
-                <div class="article-card__info__card caption-with-letter-spacing h5">
+                <div class="article-card__info__card caption-with-letter-spacing__card h5">
           
                   {% comment %} ここはfetured.blogの日付。アウトするとすべて日付非表示になる。 {% endcomment %}
                   {%- if show_date -%}
