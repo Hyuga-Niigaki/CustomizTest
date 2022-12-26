@@ -81,7 +81,7 @@
         {% endcomment %}
           {% endif %}
   
-            {% comment %} ここ以下がstandardを選んだ場合の挙動 {% endcomment %}
+   {% comment %} ここ以下がstandardを選んだ場合の挙動 {% endcomment %}
             
             <div class="card__inner {% if settings.card_style == 'standard' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
   
@@ -274,10 +274,10 @@
           </div>
         </div>
     {%- else -%}
-    {% comment %} ここまでがstandard時の設定 {% endcomment %}
+  {% comment %} ここまでがstandard時の設定 {% endcomment %}
   
   
-    {% comment %} ここからcardの場合を挿入 {% endcomment %}
+  {% comment %} ここからcardの場合を挿入 {% endcomment %}
     {% if settings.card_style == 'card' %} 
           {% comment %}   ここが画像枠の表示。ここをコメントアウトすると画像枠が出なくなる。これをstandardのときだけ出るようにする。  {% endcomment %}
          
@@ -291,7 +291,7 @@
   
         {% comment %} ここをdivタグことコメントアウトしたら1つ目のブログ日付左横の余計な空白が消えた。
         <div class="card-wrapper underline-links-hover">
-  <article aria-labelledby="Article-{{ article.id }}"> {% endcomment %}
+        <article aria-labelledby="Article-{{ article.id }}"> {% endcomment %}
   
   
         <div class="card article-card
