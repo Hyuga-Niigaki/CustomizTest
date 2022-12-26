@@ -1052,7 +1052,7 @@ summary::-webkit-details-marker {
 
 @media screen and (max-width: 749px) {
   .grid__item.slider__slide--full-width {
-    width: 700%;
+    width: 100%;
     max-width: none;
   }
 }
