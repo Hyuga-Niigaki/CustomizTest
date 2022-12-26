@@ -57,6 +57,9 @@
         
           {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
             <li id="Slide-{{ section.id }}-{{ forloop.index }}" class="blog__post grid__item article slider__slide slider__slide--full-width">
+              セクションID→{{ section.id }}
+              <br>
+              ブロックID→{{ block.id }}
               {% render 'article-card', 
                 blog: section.settings.blog, 
                 article: article, 
