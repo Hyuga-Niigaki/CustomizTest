@@ -197,7 +197,7 @@
     "1598f45d-7689-4279-8d33-bd0b365edb18": {
       "type": "section-blog-custom",
       "settings": {
-        "heading": "Blog posts",
+        "heading": "Blog post",
         "heading_size": "h2",
         "blog": "ニュース",
         "post_limit": 3,
