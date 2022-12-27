@@ -26,9 +26,21 @@
     </div>
     <ul>
       <li class="mypage">
-        <a href="https://www.decencia.co.jp/mypage/mypage.html" class="ti-off">{% render 'icon-account' %}</a>
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="ti-off">
+          {% render 'icon-account' %}
+        <span class="visually-hidden">
+          {%- liquid
+            if customer
+              echo 'customer.account_fallback' | t
+            else
+              echo 'customer.log_in' | t
+            endif
+          -%}
+        </span>
+        </a>
       </li>
       <li class="cart">
+        <a href="{{ routes.cart_url }}">
          {%- liquid
           if cart == empty
             render 'icon-cart-empty'
@@ -36,7 +48,6 @@
             render 'icon-cart'
           endif
         -%}
-        <a href="https://www.decencia.co.jp/cart/cart.html">
           <span class="qty">{{ cart.item_count }}</span>
         </a>
       </li>
