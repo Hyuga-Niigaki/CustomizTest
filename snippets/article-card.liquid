@@ -43,42 +43,41 @@
               -%}
           {% endif %}
   
-   {% comment %} ここ直下2行がブログコンテンツが横並びになるための設定 {% endcomment %}
-        <div class="card-wrapper underline-links-hover">
-         <article aria-labelledby="Article-{{ article.id }}"> 
+          {% comment %} ここ直下2行がブログコンテンツが横並びになるための設定 {% endcomment %}
+          <div class="card-wrapper underline-links-hover">
+          <article aria-labelledby="Article-{{ article.id }}"> 
   
   
           <div class="card article-card
             card--{{ settings.card_style }}
             {% if media_height and media_height != 'adapt' %} article-card__image--{{ media_height }}{% endif %}
-          {% comment %} ↓ 画像表示ここじゃない {% endcomment %}
+            {% comment %} ↓ 画像表示ここじゃない {% endcomment %}
             {% if article.image and show_image %} card--media{% else %} card--text{% endif %} 
   
             {% comment %} ここ以下がcardを選んだ場合の挙動 {% endcomment %}
   
             {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
             {% if settings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio{% endif %}"  
-  
-           
           >
+
             {% comment %} ↑の＞のすぐ前に入っていたものを移動してコメントアウト（これが画像枠のコードと思われるため、多分→違うっぽい）。
             style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;" {% endcomment %}
   
   
             {% comment %} ここがディセンシアのニュースHTML。もろもろ書き換えて見た目調整すべし {% endcomment %}
-            {% if settings.card_style == 'card' %} 
-            
+      
+         {% if settings.card_style == 'card' %} 
             <ul id="list_home_page_news">
-        {% comment %} 				
+              {% comment %} 				
               <li id="00348">
                 <a href="/news/00348/">
                     <span class="date">2022.12.12</span>
                     <p class="sttl">年末年始期間中の営業と商品のお届けについて</p>
                 </a>
-            </li>
-          
+              </li>
+              
+              {% endcomment %}
             </ul>
-        {% endcomment %}
           {% endif %}
   
    {% comment %} ここ以下がstandardを選んだ場合の挙動 {% endcomment %}
@@ -160,7 +159,7 @@
   
         {% comment %}   ここはブログ記事機能の見出し画像・テキスト幅を可変するコード。テーマ設定内のスタイル設定次第で可変できるように複製移植（ここの中で分岐にした方がいい？）。 {% endcomment %}
   
-        {% if settings.card_style == 'standard' %} 
+    {% if settings.card_style == 'standard' %} 
             <div class="card__content">    
                 <div class="card__information">
                   <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
@@ -274,10 +273,10 @@
           </div>
         </div>
     {%- else -%}
-  {% comment %} ここまでがstandard時の設定 {% endcomment %}
+    {% comment %} ここまでがstandard時の設定 {% endcomment %}
   
   
-  {% comment %} ここからcardの場合を挿入 {% endcomment %}
+    {% comment %} ここからcardの場合を挿入 {% endcomment %}
     {% if settings.card_style == 'card' %} 
           {% comment %}   ここが画像枠の表示。ここをコメントアウトすると画像枠が出なくなる。これをstandardのときだけ出るようにする。  {% endcomment %}
          
