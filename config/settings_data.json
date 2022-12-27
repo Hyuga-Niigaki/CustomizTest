@@ -110,7 +110,6 @@
     "cart_type": "notification",
     "show_vendor": false,
     "show_cart_note": false,
-    "blog_card_style": "standard",
     "blog_card_image_padding": 0,
     "blog_card_text_alignment": "left",
     "blog_card_color_scheme": "background-1",
