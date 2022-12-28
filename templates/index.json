@@ -64,9 +64,6 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-
-
-
     },
     "rich_text": {
       "type": "rich-text",
@@ -174,9 +171,12 @@
         "full_width": false,
         "color_scheme": "background-1",
         "padding_top": 36,
+<<<<<<< HEAD
         "padding_bottom": 36,
+=======
+        "padding_bottom": 36
+>>>>>>> 3ddf00a56ab5b263ce695d3d29321dc87cf2a386
       }
-
     },
     "a63b6d27-4b5f-4cea-85c7-bf493ca3123a": {
       "type": "section-blog-custom",
@@ -192,7 +192,11 @@
         "show_author": false,
         "show_view_all": true,
         "padding_top": 36,
+<<<<<<< HEAD
         "padding_bottom": 36  
+=======
+        "padding_bottom": 36
+>>>>>>> 3ddf00a56ab5b263ce695d3d29321dc87cf2a386
       }
     },
     "1598f45d-7689-4279-8d33-bd0b365edb18": {
@@ -209,9 +213,12 @@
         "show_author": false,
         "show_view_all": true,
         "padding_top": 36,
+<<<<<<< HEAD
         "padding_bottom": 36,
+=======
+        "padding_bottom": 36
+>>>>>>> 3ddf00a56ab5b263ce695d3d29321dc87cf2a386
       }
-      
     }
   },
   "order": [
