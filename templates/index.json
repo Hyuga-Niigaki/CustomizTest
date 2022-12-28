@@ -190,6 +190,23 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "a088ceca-0ab8-49d6-b5f0-f00d7d23057d": {
+      "type": "section-blog-custom",
+      "settings": {
+        "heading": "Blog posts",
+        "heading_size": "h1",
+        "blog": "ニュース",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "background-1",
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -199,6 +216,7 @@
     "featured_collection",
     "collage",
     "video",
-    "a63b6d27-4b5f-4cea-85c7-bf493ca3123a"
+    "a63b6d27-4b5f-4cea-85c7-bf493ca3123a",
+    "a088ceca-0ab8-49d6-b5f0-f00d7d23057d"
   ]
 }
