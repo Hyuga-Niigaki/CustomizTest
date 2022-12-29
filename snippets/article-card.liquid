@@ -37,17 +37,9 @@
     {% comment %} この下のif文を全て if news_style  で分岐するように書き換えれば無事解決になる気がする{% endcomment %}
   
     {% unless news_style %}
-          {% comment %} 
-          {% if settings.card_style == 'standard' %}  
-          {% endcomment %}
 
           {% comment %}   画像枠表示をstandardのときだけ出るようにした。これでほぼOK。あとはnews表示の時に正しいHTMLが出ればよい  {% endcomment %}
 
-
-        
-          {% comment %}           
-          {% if settings.card_style == 'standard' %}
-             {% endcomment %}
             
             {% comment %}   ここが画像枠の表示。ここをコメントアウトすると画像枠が出なくなる。これをstandardのときだけ出るようにする。  {% endcomment %}
             {%- liquid
@@ -77,13 +69,10 @@
   
          {% unless news_style %}
 
-            {% comment %} {% if settings.card_style == 'card' %}  {% endcomment %}
+ 
             
             color-{{ settings.card_color_scheme }} gradient
 
-           {% comment %}
-            {% endif %}
-            {% if settings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio {% endcomment %}
             {% if media_height == nil and article.image == empty or show_image == false %} ratio
             {% endif %}
         {% endunless %}
@@ -99,7 +88,6 @@
 
         {% if news_style %}
 
-         {% comment %} {% if settings.card_style == 'card' %}  {% endcomment %}
             <ul id="list_home_page_news">
               {% comment %} 				
               <li id="00348">
@@ -131,7 +119,6 @@
   
   
         {% comment %} ここに画像表示のコードをねじこんでみる {% endcomment %}
-        {% comment %} {% if settings.card_style == 'standard' %}  {% endcomment %}
 
       {% unless news_style %}
 
@@ -208,7 +195,6 @@
   
         {% comment %}   ここはブログ記事機能の見出し画像・テキスト幅を可変するコード。テーマ設定内のスタイル設定次第で可変できるように複製移植（ここの中で分岐にした方がいい？）。 {% endcomment %}
   
-    {% comment %} {% if settings.card_style == 'standard' %}  {% endcomment %}
     {% unless news_style %}
 
             <div class="card__content">    
@@ -329,7 +315,6 @@
   
   
     {% comment %} ここからcardの場合を挿入 {% endcomment %}
-    {% comment %} {% if settings.card_style == 'card' %}  {% endcomment %}
 
     {% if news_style %}
     
@@ -367,7 +352,6 @@
         >
   
           {% comment %} ここがディセンシアのニュースHTML。もろもろ書き換えて見た目調整すべし {% endcomment %}
-          {% comment %} {% if settings.card_style == 'card' %}  {% endcomment %}
           {% if news_style %}
           
               <ul id="list_home_page_news">
