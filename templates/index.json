@@ -60,6 +60,7 @@
         "show_image": true,
         "show_date": true,
         "show_author": false,
+        "news_style": false,
         "show_view_all": true,
         "padding_top": 36,
         "padding_bottom": 36
@@ -186,6 +187,7 @@
         "show_image": true,
         "show_date": true,
         "show_author": false,
+        "news_style": false,
         "show_view_all": true,
         "padding_top": 36,
         "padding_bottom": 36
@@ -203,6 +205,7 @@
         "show_image": true,
         "show_date": true,
         "show_author": false,
+        "news_style": true,
         "show_view_all": true,
         "padding_top": 36,
         "padding_bottom": 36
