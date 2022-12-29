@@ -30,18 +30,25 @@
 
   {% endcomment %}
 
-  {% if news_style %}
-  <div>これでいける</div>
-  <span>spanタグ</span>
-  {% endif %}
+
 
   {%- if article and article != empty -%}
 
     {% comment %} この下のif文を全て if news_style  で分岐するように書き換えれば無事解決になる気がする{% endcomment %}
-    
-    {% if settings.card_style == 'standard' %} 
+  
+    {% unless news_style %}
+          {% comment %} 
+          {% if settings.card_style == 'standard' %}  
+          {% endcomment %}
+
           {% comment %}   画像枠表示をstandardのときだけ出るようにした。これでほぼOK。あとはnews表示の時に正しいHTMLが出ればよい  {% endcomment %}
-          {% if settings.card_style == 'standard' %} 
+
+
+        
+          {% comment %}           
+          {% if settings.card_style == 'standard' %}
+             {% endcomment %}
+            
             {% comment %}   ここが画像枠の表示。ここをコメントアウトすると画像枠が出なくなる。これをstandardのときだけ出るようにする。  {% endcomment %}
             {%- liquid
                 assign ratio = 1
@@ -49,8 +56,12 @@
                   assign ratio = media_aspect_ratio
                 endif
               -%}
+              
+    {% endunless %}
+            {% comment %}             
           {% endif %}
-  
+             {% endcomment %}
+
           {% comment %} ここ直下2行がブログコンテンツが横並びになるための設定 {% endcomment %}
           <div class="card-wrapper underline-links-hover">
           <article aria-labelledby="Article-{{ article.id }}"> 
@@ -64,8 +75,19 @@
   
             {% comment %} ここ以下がcardを選んだ場合の挙動 {% endcomment %}
   
-            {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
-            {% if settings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio{% endif %}"  
+         {% unless news_style %}
+
+            {% comment %} {% if settings.card_style == 'card' %}  {% endcomment %}
+            
+            color-{{ settings.card_color_scheme }} gradient
+
+           {% comment %}
+            {% endif %}
+            {% if settings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio {% endcomment %}
+            {% if media_height == nil and article.image == empty or show_image == false %} ratio
+            {% endif %}
+        {% endunless %}
+          {% comment %} {% endif %}"   {% endcomment %}
           >
 
             {% comment %} ↑の＞のすぐ前に入っていたものを移動してコメントアウト（これが画像枠のコードと思われるため、多分→違うっぽい）。
@@ -74,7 +96,10 @@
   
             {% comment %} ここがディセンシアのニュースHTML。もろもろ書き換えて見た目調整すべし {% endcomment %}
       
-         {% if settings.card_style == 'card' %} 
+
+        {% if news_style %}
+
+         {% comment %} {% if settings.card_style == 'card' %}  {% endcomment %}
             <ul id="list_home_page_news">
               {% comment %} 				
               <li id="00348">
@@ -86,18 +111,31 @@
               
               {% endcomment %}
             </ul>
-          {% endif %}
+          {% comment %} {% endif %} {% endcomment %}
+        {% endif %}
   
    {% comment %} ここ以下がstandardを選んだ場合の挙動 {% endcomment %}
             
-            <div class="card__inner {% if settings.card_style == 'standard' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
+            {% comment %} 
+            <div class="card__inner {% if settings.card_style == 'standard' %} color-{{ settings.card_color_scheme }} gradient{% endif %} 
+            {% endcomment %}
+              <div class="card__inner 
+              {% unless news_style %} color-{{ settings.card_color_scheme }} gradient
+              {% endunless %}
+                  {% comment %} {% ßendif %} {% endcomment %}
+
   
-              {% if article.image and show_image or settings.card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+              {% comment %} {% if article.image and show_image or settings.card_style == 'standard' %} ratio{% endif %}" {% endcomment %}
+              
+              {% if article.image and show_image %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
   
   
         {% comment %} ここに画像表示のコードをねじこんでみる {% endcomment %}
-        {% if settings.card_style == 'standard' %} 
-              
+        {% comment %} {% if settings.card_style == 'standard' %}  {% endcomment %}
+
+      {% unless news_style %}
+
+
           {% comment %} これは画像の枠。足してみた {% endcomment %}
               {% comment %} {%- liquid
                 assign ratio = 1
@@ -105,16 +143,17 @@
                   assign ratio = media_aspect_ratio
                 endif
               -%} {% endcomment %}
-  
+        
               
-            {%- if show_image == true and article.image -%}
+          {%- if show_image == true and article.image -%}
               <div class="article-card__image-wrapper card__media">
                 <div class="article-card__image media media--hover-effect" {% if section.settings.media_height == 'adapt' %} style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"{% endif %}>
                   {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
-                  <img
-                    srcset="{%- if article.image.src.width >= 165 -%}
+                  
+                  <img srcset="{%- if article.image.src.width >= 165 -%}
                       {{ article.image.src | image_url: width: 165 }} 165w,
                     {%- endif -%}
+
                       {%- if article.image.src.width >= 360 -%}{{ article.image.src | image_url: width: 360 }} 360w,{%- endif -%}
                       {%- if article.image.src.width >= 533 -%}{{ article.image.src | image_url: width: 533 }} 533w,{%- endif -%}
                       {%- if article.image.src.width >= 720 -%}{{ article.image.src | image_url: width: 720 }} 720w,{%- endif -%}
@@ -127,7 +166,7 @@
                     (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
                     alt="{{ article.image.src.alt | escape }}"
                     class="motion-reduce"
-                    {% unless lazy_load == false %}loading="lazy"{% endunless %}
+                  {% unless lazy_load == false %}loading="lazy"{% endunless %}
                     width="{{ article.image.width }}"
                     height="{{ article.image.height }}"
                   >
@@ -135,7 +174,9 @@
                 </div>
               </div>
             {%- endif -%}
-        {% endif %}
+
+      {% endunless %}
+        {% comment %} {% endif %} {% endcomment %}
   
         {% comment %}  ★ここが画像表示のコード。ただしコメントアウトしても画像枠は残る。       
               {%- if show_image == true and article.image -%}
@@ -167,7 +208,8 @@
   
         {% comment %}   ここはブログ記事機能の見出し画像・テキスト幅を可変するコード。テーマ設定内のスタイル設定次第で可変できるように複製移植（ここの中で分岐にした方がいい？）。 {% endcomment %}
   
-    {% if settings.card_style == 'standard' %} 
+    {% comment %} {% if settings.card_style == 'standard' %}  {% endcomment %}
+    {% unless news_style %}
 
             <div class="card__content">    
                 <div class="card__information">
@@ -187,7 +229,7 @@
                     {%- endif -%}
                   </div>
                   
-                  {%- if show_excerpt -%}
+               {%- if show_excerpt -%}
                   
                   {% comment %} ここはstandardブログの本文プレビュー表示 
                   {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
@@ -207,7 +249,7 @@
                         <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
                       {%- endif -%}
                     </div>
-                    {%- endif -%}
+                {%- endif -%}
                 </div>
                 
                 {%- if show_badge -%}
@@ -215,7 +257,7 @@
                     <span class="badge color-background-1">{{ 'blogs.article.blog' | t }}</span>
                   </div>
                 {%- endif -%}
-              {% endif %}
+              {% comment %} {% endif %} {% endcomment %}
             </div>
           </div>
             
@@ -281,12 +323,17 @@
             </div>
           </div>
         </div>
-    {%- else -%}
+      {% endunless %}
+    {% comment %} {%- else -%} {% endcomment %}
     {% comment %} ここまでがstandard時の設定 {% endcomment %}
   
   
     {% comment %} ここからcardの場合を挿入 {% endcomment %}
-    {% if settings.card_style == 'card' %} 
+    {% comment %} {% if settings.card_style == 'card' %}  {% endcomment %}
+
+    {% if news_style %}
+    
+
           {% comment %}   ここが画像枠の表示。ここをコメントアウトすると画像枠が出なくなる。これをstandardのときだけ出るようにする。  {% endcomment %}
          
           {% comment %} {%- liquid
@@ -295,7 +342,7 @@
                 assign ratio = media_aspect_ratio
               endif
             -%} {% endcomment %}
-        {% endif %}
+        {% comment %} {% endif %} {% endcomment %}
   
         {% comment %} ここをdivタグことコメントアウトしたら1つ目のブログ日付左横の余計な空白が消えた。
         <div class="card-wrapper underline-links-hover">
@@ -310,26 +357,30 @@
   
           {% comment %} ここ以下がcardを選んだ場合の挙動 {% endcomment %}
   
-          {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
-          {% if settings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio{% endif %}"  
+          {% comment %} {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %} {% endcomment %}
+          {% if news_style %} color-{{ settings.card_color_scheme }} gradient{% endif %} 
+
+          {% comment %} {% if settings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio{% endif %}"   {% endcomment %}
+          {% if new_style and media_height == nil and article.image == empty or show_image == false %} ratio{% endif %}" 
   
           style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
         >
   
           {% comment %} ここがディセンシアのニュースHTML。もろもろ書き換えて見た目調整すべし {% endcomment %}
-          {% if settings.card_style == 'card' %} 
+          {% comment %} {% if settings.card_style == 'card' %}  {% endcomment %}
+          {% if news_style %}
           
-          <ul id="list_home_page_news">
-        {% comment %} 				
-            <li id="00348">
-              <a href="/news/00348/">
-                  <span class="date">2022.12.12</span>
-                  <p class="sttl">年末年始期間中の営業と商品のお届けについて</p>
-              </a>
-          </li>
-  
-          </ul>
-        {% endcomment %}
+              <ul id="list_home_page_news">
+            {% comment %} 				
+                <li id="00348">
+                  <a href="/news/00348/">
+                      <span class="date">2022.12.12</span>
+                      <p class="sttl">年末年始期間中の営業と商品のお届けについて</p>
+                  </a>
+              </li>
+      
+              </ul>
+            {% endcomment %}
         {% endif %}
   
         
@@ -369,7 +420,7 @@
                   </div> 
                 {% endcomment %}
   
-              {%- if show_excerpt -%}
+         {%- if show_excerpt -%}
                 {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
                   <p class="article-card__excerpt__card rte-width">
                   {% comment %}  ※ここがブログ記事本文の冒頭30文字表示らしい。
@@ -387,7 +438,7 @@
                     <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
                   {%- endif -%}
                 </div>
-              {%- endif -%}
+          {%- endif -%}
             </div>
   
             {%- if show_badge -%}
@@ -401,5 +452,5 @@
     
     {%- endif -%}
     {% comment %} ここまでcardの場合 {% endcomment %}
-  {%- endif -%}
+{%- endif -%}
   
