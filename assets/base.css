@@ -534,6 +534,15 @@ blockquote {
   text-transform: uppercase;
 }
 
+.caption-with-letter-spacing__card{
+  font-size: 1rem;
+  letter-spacing: 0.13rem;
+  /* line-height: calc(1 + 0.2 / var(--font-body-scale)); */
+  /* width: 700px; */
+  width: 100%;
+  text-transform: uppercase;
+}
+
 .caption-with-letter-spacing--medium {
   font-size: 1.2rem;
   letter-spacing: .16rem;
@@ -1032,16 +1041,16 @@ summary::-webkit-details-marker {
 }
 
 .grid__item {
-  width: calc(25% - var(--grid-mobile-horizontal-spacing) * 3 / 4);
-  max-width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+  /* width: calc(25% - var(--grid-mobile-horizontal-spacing) * 3 / 4);
+  max-width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2); */
   flex-grow: 1;
   flex-shrink: 0;
 }
 
 @media screen and (min-width: 750px) {
   .grid__item {
-    width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
-    max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+    /* width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
+    max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2); */
   }
 }
 
@@ -1068,29 +1077,35 @@ summary::-webkit-details-marker {
 
 @media screen and (min-width: 750px) {
   .grid--3-col .grid__item {
-    width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+    /* width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3); */
+    width: 100%;
   }
 }
 
 .grid--2-col .grid__item {
-  width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
+  /* width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2); */
+  width: 100%;
 }
 
 @media screen and (min-width: 750px) {
   .grid--2-col .grid__item {
-    width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+    /* width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2); */
+    width: 100%;
   }
 
   .grid--4-col-tablet .grid__item {
-    width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
+    /* width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4); */
+    width: 100%;
   }
 
   .grid--3-col-tablet .grid__item {
-    width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+    /* width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3); */
+    width: 100%;
   }
 
   .grid--2-col-tablet .grid__item {
-    width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+    /* width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2); */
+    width: 100%;
   }
 }
 
