@@ -51,7 +51,7 @@
     "20c193be-43be-4d7b-af4a-c6ed2e0e9419": {
       "type": "section-blog-custom",
       "settings": {
-        "heading": "Blog posts",
+        "heading": "Featured",
         "heading_size": "h1",
         "blog": "journal",
         "post_limit": 3,
