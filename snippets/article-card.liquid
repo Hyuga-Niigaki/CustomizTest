@@ -38,7 +38,7 @@
   
     {% unless news_style %}
           {% comment %} 
-          {% if settings.card_style == 'standard' %}  
+         -ifsettings.card_style == 'standard' %}  
           {% endcomment %}
 
           {% comment %}   画像枠表示をstandardのときだけ出るようにした。これでほぼOK。あとはnews表示の時に正しいHTMLが出ればよい  {% endcomment %}
@@ -46,7 +46,7 @@
 
         
           {% comment %}           
-          {% if settings.card_style == 'standard' %}
+         -ifsettings.card_style == 'standard' %}
              {% endcomment %}
             
             {% comment %}   ここが画像枠の表示。ここをコメントアウトすると画像枠が出なくなる。これをstandardのときだけ出るようにする。  {% endcomment %}
@@ -77,13 +77,13 @@
   
          {% unless news_style %}
 
-            {% comment %} {% if settings.card_style == 'card' %}  {% endcomment %}
+            {% comment %}-ifsettings.card_style == 'card' %}  {% endcomment %}
             
             color-{{ settings.card_color_scheme }} gradient
 
            {% comment %}
             {% endif %}
-            {% if settings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio {% endcomment %}
+           -ifsettings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio {% endcomment %}
             {% if media_height == nil and article.image == empty or show_image == false %} ratio
             {% endif %}
         {% endunless %}
@@ -99,7 +99,7 @@
 
         {% if news_style %}
 
-         {% comment %} {% if settings.card_style == 'card' %}  {% endcomment %}
+         {% comment %}-if settings.card_style == 'card' %}  {% endcomment %}
             <ul id="list_home_page_news">
               {% comment %} 				
               <li id="00348">
@@ -117,7 +117,7 @@
    {% comment %} ここ以下がstandardを選んだ場合の挙動 {% endcomment %}
             
             {% comment %} 
-            <div class="card__inner {% if settings.card_style == 'standard' %} color-{{ settings.card_color_scheme }} gradient{% endif %} 
+            <div class="card__inner-if settings.card_style == 'standard' %} color-{{ settings.card_color_scheme }} gradient{% endif %} 
             {% endcomment %}
               <div class="card__inner 
               {% unless news_style %} color-{{ settings.card_color_scheme }} gradient
@@ -125,13 +125,13 @@
                   {% comment %} {% ßendif %} {% endcomment %}
 
   
-              {% comment %} {% if article.image and show_image or settings.card_style == 'standard' %} ratio{% endif %}" {% endcomment %}
+              {% comment %}----if article.image and show_image or settings.card_style == 'standard' %} ratio{% endif %}" {% endcomment %}
               
               {% if article.image and show_image %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
   
   
         {% comment %} ここに画像表示のコードをねじこんでみる {% endcomment %}
-        {% comment %} {% if settings.card_style == 'standard' %}  {% endcomment %}
+        {% comment %}----if settings.card_style == 'standard' %}  {% endcomment %}
 
       {% unless news_style %}
 
@@ -181,7 +181,7 @@
         {% comment %}  ★ここが画像表示のコード。ただしコメントアウトしても画像枠は残る。       
               {%- if show_image == true and article.image -%}
                 <div class="article-card__image-wrapper card__media">
-                  <div class="article-card__image media media--hover-effect" {% if section.settings.media_height == 'adapt' %} style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"{% endif %}>
+                  <div class="article-card__image media media--hover-effect"----if section.settings.media_height == 'adapt' %} style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"{% endif %}>
                     {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
                     <img
                       srcset="{%- if article.image.src.width >= 165 -%}{{ article.image.src | image_url: width: 165 }} 165w,{%- endif -%}
@@ -208,7 +208,7 @@
   
         {% comment %}   ここはブログ記事機能の見出し画像・テキスト幅を可変するコード。テーマ設定内のスタイル設定次第で可変できるように複製移植（ここの中で分岐にした方がいい？）。 {% endcomment %}
   
-    {% comment %} {% if settings.card_style == 'standard' %}  {% endcomment %}
+    {% comment %}----if settings.card_style == 'standard' %}  {% endcomment %}
     {% unless news_style %}
 
             <div class="card__content">    
@@ -329,7 +329,7 @@
   
   
     {% comment %} ここからcardの場合を挿入 {% endcomment %}
-    {% comment %} {% if settings.card_style == 'card' %}  {% endcomment %}
+    {% comment %}----if settings.card_style == 'card' %}  {% endcomment %}
 
     {% if news_style %}
     
@@ -357,17 +357,17 @@
   
           {% comment %} ここ以下がcardを選んだ場合の挙動 {% endcomment %}
   
-          {% comment %} {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %} {% endcomment %}
+          {% comment %}----if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %} {% endcomment %}
           {% if news_style %} color-{{ settings.card_color_scheme }} gradient{% endif %} 
 
-          {% comment %} {% if settings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio{% endif %}"   {% endcomment %}
+          {% comment %}----if settings.card_style == 'card' and media_height == nil and article.image == empty or show_image == false %} ratio{% endif %}"   {% endcomment %}
           {% if new_style and media_height == nil and article.image == empty or show_image == false %} ratio{% endif %}" 
   
           style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
         >
   
           {% comment %} ここがディセンシアのニュースHTML。もろもろ書き換えて見た目調整すべし {% endcomment %}
-          {% comment %} {% if settings.card_style == 'card' %}  {% endcomment %}
+          {% comment %}----if settings.card_style == 'card' %}  {% endcomment %}
           {% if news_style %}
           
               <ul id="list_home_page_news">
