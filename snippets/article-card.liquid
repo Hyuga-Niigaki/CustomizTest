@@ -30,7 +30,15 @@
 
   {% endcomment %}
 
+  {% if news_style %}
+  <div>これでいける</div>
+  <span>spanタグ</span>
+  {% endif %}
+
   {%- if article and article != empty -%}
+
+    {% comment %} この下のif文を全て if news_style  で分岐するように書き換えれば無事解決になる気がする{% endcomment %}
+    
     {% if settings.card_style == 'standard' %} 
           {% comment %}   画像枠表示をstandardのときだけ出るようにした。これでほぼOK。あとはnews表示の時に正しいHTMLが出ればよい  {% endcomment %}
           {% if settings.card_style == 'standard' %} 
@@ -160,6 +168,7 @@
         {% comment %}   ここはブログ記事機能の見出し画像・テキスト幅を可変するコード。テーマ設定内のスタイル設定次第で可変できるように複製移植（ここの中で分岐にした方がいい？）。 {% endcomment %}
   
     {% if settings.card_style == 'standard' %} 
+
             <div class="card__content">    
                 <div class="card__information">
                   <h3 class="card__heading{% if show_excerpt %} h2{% endif %}">
